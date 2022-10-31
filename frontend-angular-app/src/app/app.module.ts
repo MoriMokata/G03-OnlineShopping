@@ -12,7 +12,7 @@ import { ElectronicsComponent } from './components/electronics/electronics.compo
 import { WearsComponent } from './components/wears/wears.component';
 import { FurnituresComponent } from './components/furnitures/furnitures.component';
 import { FoodComponent } from './components/food/food.component';
-import { SingleProductComponent } from './single-product/single-product.component';
+import { SingleProductComponent } from './components/single-product/single-product.component';
 
 @NgModule({
   declarations: [
