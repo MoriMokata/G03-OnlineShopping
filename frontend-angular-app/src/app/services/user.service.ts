@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class UserService {
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -12,12 +12,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  signIn(payload: any) {
-    const apiUrl = `http://localhost:3000/users/signin`;
+  userSignup(payload: any) {
+    const apiUrl = `http://localhost:3000/users/create`;
     return this.http.post<any>(apiUrl, payload, this.httpOptions);
-  }
-
-  getToken() {
-    return localStorage.getItem("token");
   }
 }

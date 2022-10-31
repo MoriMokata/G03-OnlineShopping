@@ -1,10 +1,11 @@
-<div class="container-fluid h-custom">
-  <div class="row d-flex justify-content-center align-items-center h-100">
-    <div class="col-md-9 col-lg-6 col-xl-5">
+<div class="container-fluid">
+  <!-- <div class="row d-flex justify-content-center align-items-center h-100"> -->
+  <div class="row" style="padding: 24px">
+    <div class="col-md-6">
       <img src="https://img.freepik.com/free-vector/online-shopping-concept-landing-page_52683-22153.jpg?w=2000"
         class="img-fluid" alt="Sample image">
     </div>
-    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 p-8">
+    <div class="col-md-6">
       <form [formGroup]="loginForm">
         <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
           <p class="lead fw-normal mb-0 me-3"><b>Sign in</b></p>
@@ -28,8 +29,8 @@
         </div>
 
         <div class="text-center text-lg-start mt-4 pt-2">
-          <button type="button" class="btn btn-primary btn-lg"
-            style="padding-left: 2.5rem; padding-right: 2.5rem;"><b>Login</b></button>
+          <button type="submit" class="btn btn-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="submit()"><b>Login</b></button>
         </div>
 
       </form>
