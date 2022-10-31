@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <div class="container px-5 marginTop">
+        
+        <div class="mb-4 ">
+
+            <h2 >Confirm order and pay</h2>
+            <span>please make the payment, after that you can enjoy all the features and benefits.</span>
+
+        </div>
+        <form [formGroup]="paymentForm">
+        <div class="row ">  
+            <div class="bgcolor col-md-8 rounded">
+                <div class="card p-3 mt-3 ">
+                    <h6 class="text-uppercase">Payment details</h6>
+                    <div class="inputbox mt-3"> <input type="text" name="nameCard" formControlName="nameCard" class="form-control" maxlength="30" required="required">
+                        <span>Name on card</span> </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="inputbox mt-3 mr-2"> 
+                                <input type="number" id="cardNumber" name="cardNumber" formControlName="cardNumber" class="form-control" onkeypress="if(this.value.length==16) return false;"
+                                    required="required"> <i class="fa fa-credit-card" ></i> <span>Card Number</span>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="d-flex flex-row"> 
+                                <div class="inputbox mt-3 mr-2"> <input type="month" name="expiry" formControlName="expiry" class="form-control" pattern="\d{4}-\d{2}" 
+                                        required="required"> <span>Expiry</span> </div>
+                                <div class="inputbox mt-3 mr-2"> <input type="number" name="cvv" maxlength="3" formControlName="cvv" class="form-control" onkeypress="if(this.value.length==3) return false;"
+                                        required="required"> <span>CVV</span> </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="mt-4 mb-4" formGroupName="billingAddress">
+                        <h6 class="text-uppercase">Billing Address</h6>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="inputbox mt-3 mr-2"> <input type="text" name="streetAddress" formControlName="streetAddress" class="form-control"
+                                        required="required"> <span>Street Address</span> </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="inputbox mt-3 mr-2"> <input type="text" name="city" formControlName="city" class="form-control"
+                                        required="required"> <span>City</span> </div>
+                            </div>
+
+
+
+
+                        </div>
+
+
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <div class="inputbox mt-3 mr-2"> <input type="text" name="state" formControlName="state" class="form-control"
+                                        required="required"> <span>State/Province</span> </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="inputbox mt-3 mr-2"> <input type="number" name="zipCode" formControlName="zipCode" class="form-control" onkeypress="if(this.value.length==5) return false;"
+                                        required="required"> <span>Zip code</span> </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mt-4 mb-4 d-flex justify-content-between">
+
+                    <button class="btn btn-secondary px-3">Previous step</button>
+                    <button class="btn btn-success px-3">Confirm</button>
+
+
+
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 ">
+
+                <!-- -------------------------- -->
+                <div class="card-holder">
+                    <div class="credit-card mt-3">
+                      <span class="title">Bank of OnlineShop</span>
+                      <span class="bank-logo"> </span>
+                      <div class="padding-chip">
+                        <img class="chip rounded-3 rounded-top" src="https://cdn.vectorstock.com/i/preview-lt/78/39/golden-emv-chip-icon-secure-online-banking-vector-30167839.webp">
+                      </div>
+                      
+                      <span class="holo-back"></span>
+                      <span class="holo"></span>
+                      <br> 
+                      <span class="emboss number">{{getFormat()}}</span>
+                      <img class="mc" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MasterCard_logo.png/320px-MasterCard_logo.png">
+                      <div class="align-center">
+                        <span class="small-type">Expiry end</span><br>
+                        <span class="emboss exp">{{paymentForm.value.expiry}}</span>
+                        <!-- <span class="small-type">Expiry end</span><br>
+                        <span class="emboss exp">07 / 14</span> -->
+                        
+                      </div>
+                      <span class="emboss name">{{paymentForm.value.nameCard}}</span>
+                      
+                    </div>
+                    
+                  </div>
+                <!-- -------------------------- -->
+
+                <!-- *********************** -->
+                <!-- <div class="card card-blue p-3 text-white mb-3">
+
+                    <span>You have to pay</span>
+                    <div class="d-flex flex-row align-items-end mb-3">
+                        <h1 class="mb-0 yellow">$549</h1> <span>.99</span>
+                    </div>
+
+                    <span>Enjoy all the features and perk after you complete the payment</span>
+                    <a href="#" class="yellow decoration">Know all the features</a>
+
+                    <div class="hightlight">
+                        <span>{{paymentForm.value | json}}</span>
+
+                        
+                    </div>
+
+                </div> -->
+
+                <!-- *********************** -->
+
+                
+
+            </div>
+
+        </div>
+        <div>{{paymentForm.status | json}}</div>
+    </form>
+
+    </div>
+
+    <!-- --------------- -->
+   
+    
+    
+</body>
+
+</html>
