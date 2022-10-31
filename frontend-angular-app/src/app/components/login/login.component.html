@@ -1,0 +1,38 @@
+<div class="container-fluid h-custom">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-md-9 col-lg-6 col-xl-5">
+      <img src="https://img.freepik.com/free-vector/online-shopping-concept-landing-page_52683-22153.jpg?w=2000"
+        class="img-fluid" alt="Sample image">
+    </div>
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 p-8">
+      <form [formGroup]="loginForm">
+        <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+          <p class="lead fw-normal mb-0 me-3"><b>Sign in</b></p>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4" style="margin-top: 20px;">
+          <input type="email" id="email" class="form-control form-control-lg" formControlName="email"
+            placeholder="Enter email address" />
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-3">
+          <input type="password" id="password" class="form-control form-control-lg" formControlName="password"
+            placeholder="Enter password" />
+        </div>
+
+        <div class="register">
+          <p><b>Don't have an account?
+              <a routerLink="/register" routerLinkActive="active" class="link-danger">Register</a></b></p>
+        </div>
+
+        <div class="text-center text-lg-start mt-4 pt-2">
+          <button type="button" class="btn btn-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;"><b>Login</b></button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
