@@ -1,0 +1,180 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title" style="text-align: center">Add Product</h4><br>
+        <div class="row">
+            <div class="col-md-6">
+                <form [formGroup]="productForm">
+                    <div class="card">
+                        <!-- <div class="card-header" style="text-align: center;">
+                            <h5>Information</h5>
+                        </div> -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="name" class="mb-2"><h6>Product Name </h6></label>
+                                        <input id="name" type="text" class="form-control mb-3" formControlName="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="id" class="mb-2"><h6>Product ID</h6></label>
+                                        <input type="number" class="form-control mb-3" formControlName="id">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="type" class="mb-2"><h6>Category</h6> </label>
+                                        <select class="form-control mb-3" formControlName="type">
+                                          <option *ngFor="let item of productType; index as i" [value]="productType[i]">{{productType[i]}}</option>
+                                        </select>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="detail" class="mb-2"><h6>Description</h6> </label>
+                                        <textarea class="form-control mb-3" formControlName="detail" rows="5" id="detail"></textarea>
+                                        <!-- <input type="text" class="form-control mb-3" formControlName="detail"> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="number" class="mb-2"><h6>Price</h6> </label>
+                                        <input type="number" class="form-control mb-3" formControlName="price">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="number" class="mb-2"><h6>Stock</h6> </label>
+                                        <input type="number" class="form-control mb-3" formControlName="quantity">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-md-3">
+                                    Photo :
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" formControlName="price">
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-primary" (click)="addProduct()">Add </button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="reset" class="btn btn-danger">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <!-- <div class="card-header" style="text-align: center">
+                        <h5>Product Image</h5>
+                    </div> -->
+                    <div class="card-body">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="number" class="mb-2"><h6>Add Image</h6> </label><br/>
+                                <div class="dropzone">
+                                <div class="text-wrapper">
+                                    <div class="centered">
+                                        Drage and drop your file or browse a file
+                                    </div>
+                                    </div>
+                                </div>
+                                <input multiple type="file" #selectFile value="select">
+                                <div class="row">
+                                </div>
+                                <!-- <input type="pic" class="form-control" formControlName="price"> -->
+                            </div>
+                        </div>
+                        <!-- Form Value: {{productForm.value|json}}
+                        <br/><br/>
+                        Form Status: {{productForm.value|json}} -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+
+<footer class="bg-dark" id="tempaltemo_footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-primary border-bottom pb-3 border-light logo">G3 Shopping</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt fa-fw"></i>
+                        Computer Engineering , SUT
+                    </li>
+                    <li>
+                        <i class="fa fa-phone fa-fw"></i>
+                        <a class="text-decoration-none" href="">  09-999-9999</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope fa-fw"></i>
+                        <a class="text-decoration-none" href="">  G3@g.sut.ac.th</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">Electronics</a></li>
+                    <li><a class="text-decoration-none" href="#">Wears</a></li>
+                    <li><a class="text-decoration-none" href="#">Furnitures</a></li>
+                    <li><a class="text-decoration-none" href="#">Food</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">Home</a></li>
+                    <li><a class="text-decoration-none" href="#">About Us</a></li>
+                    <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
+                    <li><a class="text-decoration-none" href="#">FAQs</a></li>
+                    <li><a class="text-decoration-none" href="#">Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="w-100 bg-black py-3">
+        <div class="container">
+            <div class="row pt-2">
+                <div class="col-12">
+                    <p class="text-left text-light">
+                        Copyright &copy; 2021 G3 Company 
+                        | Designed by Group 3 :
+                        <li>Chalermkiet Kongkapan</li>
+                        <li>Wanatthapong Wongbuthong</li>
+                        <li>Chawarat Narit</li>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
