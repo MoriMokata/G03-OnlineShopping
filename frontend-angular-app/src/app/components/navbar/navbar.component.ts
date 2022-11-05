@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent implements OnInit {
 
   token!: string | null;
+  role!: string | null;
 
   constructor(
     private authService: AuthService,
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.authService.getToken();
+    this.role = this.authService.getRole();
   }
 
   logout() {
