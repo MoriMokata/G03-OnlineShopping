@@ -1,5 +1,4 @@
-<h1 class="Kanit" style="color: #6f42c1; text-align:center">Electronics</h1>
-
+<h1 class="Kanit" style="color: #6f42c1; text-align:center">Wears</h1>
 <!-- Content -->
 <div class="container py-5">
   <div class="row">
@@ -9,10 +8,10 @@
         <ng-container *ngFor="let item of products; index as i">
           <div class="col-md-4">
             <div class="card mb-4 product-wap rounded-0">
-              <img class="card-img-top rounded-0 img-fluid" [src]="item.photo">
+              <img class="card-img-top rounded-0 img-fluid" [src]="item.img">
               <hr style="margin: 0">
               <div class="card-body">
-                <a [href]="item.href" class="h3 text-decoration-none">{{item.name}}</a>
+                <a [href]="'single-product/'+item._id" class="h3 text-decoration-none">{{item.name}}</a>
                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                   <li>{{item.description}}</li>
                   <li class="pt-2">

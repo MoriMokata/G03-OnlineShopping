@@ -1,40 +1,75 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow">
   <div class="container d-flex justify-content-between align-items-center">
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
-      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a routerLink="first" class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+    <a *ngIf="!token" class="navbar-brand text-success logo h1 align-self-center mr-auto">
       <div class="logo-image">
-        <img src="assets/img/new-white-logo.png" width="38" height="36" alt="">
+        <img src="assets/img/new-white-logo.png" width="38" height="36" alt="g3-logo">
       </div>
     </a>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a routerLink="electronics" routerLinkActive="active" class="nav-link active">Electronics</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="wears" routerLinkActive="active" class="nav-link active">Wears</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="furnitures" routerLinkActive="active" class="nav-link active">Furnitures</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="food" routerLinkActive="active" class="nav-link active">Food</a>
-        </li>
-      </ul>
-    </div>
+    <!-- Member Navbar -->
+    <ng-container *ngIf="role && role === 'Member'">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a routerLink="first" class="navbar-brand text-success logo h1 align-self-center">
+        <div class="logo-image">
+          <img src="assets/img/new-white-logo.png" width="38" height="36" alt="g3-logo">
+        </div>
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a routerLink="electronics" routerLinkActive="active" class="nav-link active">Electronics</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="wears" routerLinkActive="active" class="nav-link active">Wears</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="furnitures" routerLinkActive="active" class="nav-link active">Furnitures</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="food" routerLinkActive="active" class="nav-link active">Food</a>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+
+    <!-- Admin Navbar -->
+    <ng-container *ngIf="role && role === 'Admin'">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a routerLink="admin/add-product" class="navbar-brand text-success logo h1 align-self-center">
+        <div class="logo-image">
+          <img src="assets/img/new-white-logo.png" width="38" height="36" alt="g3-logo">
+        </div>
+      </a>
+
+      <div *ngIf="role && role === 'Admin'" class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a routerLink="admin/add-product" routerLinkActive="active" class="nav-link active">Add Product</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="admin/show-products" routerLinkActive="active" class="nav-link active">Show Products</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="admin/show-products" routerLinkActive="active" class="nav-link active">Manage Users</a>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
 
     <div>
-      <a *ngIf="token" routerLink="cart" class="btn btn-outline-light">
+      <a *ngIf="token && role==='Member'" routerLink="cart" class="btn btn-outline-light">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
         <span class="badge badge-info"></span>
       </a>
       &nbsp;
-      <a *ngIf="!token" routerLink="login" class="btn btn-outline-light">
+      <a *ngIf="!token" routerLink="login" class="btn btn-outline-light float-end">
         <i class="fa fa-user-circle-o" aria-hidden="true"></i> Log in
         <span class="badge badge-info"></span>
       </a>

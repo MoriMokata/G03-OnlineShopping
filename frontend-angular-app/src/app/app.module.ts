@@ -1,21 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FirstComponent } from './components/first/first.component';
-import { CartComponent } from './components/cart/cart.component';
-import { ElectronicsComponent } from './components/electronics/electronics.component';
-import { WearsComponent } from './components/wears/wears.component';
-import { FurnituresComponent } from './components/furnitures/furnitures.component';
-import { FoodComponent } from './components/food/food.component';
-import { SingleProductComponent } from './components/single-product/single-product.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { PaymentComponent } from './components/payment/payment.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
+// Member
+import { FirstComponent } from './components/member/first/first.component';
+import { CartComponent } from './components/member/cart/cart.component';
+import { ElectronicsComponent } from './components/member/electronics/electronics.component';
+import { WearsComponent } from './components/member/wears/wears.component';
+import { FurnituresComponent } from './components/member/furnitures/furnitures.component';
+import { FoodComponent } from './components/member/food/food.component';
+import { SingleProductComponent } from './components/member/single-product/single-product.component';
+import { PaymentComponent } from './components/member/payment/payment.component';
+
+// Admin
+import { AddproductComponent } from './components/admin/addproduct/addproduct.component';
+import { ShowproductsComponent } from './components/admin/showproducts/showproducts.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +41,9 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     PaymentComponent,
     FooterComponent,
+    AddproductComponent,
+    ShowproductsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -27,7 +27,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('id', res.result.id);
           localStorage.setItem('token', res.token);
           localStorage.setItem('role', res.result.role);
-          window.location.href = '/first';
+          if (res.result.role === 'Member') {
+            window.location.href = '/first';
+          } else if (res.result.role === 'Admin') {
+            window.location.href = '/admin/add-product';
+          }
         } else {
           alert('email or password incorrect!');
         }
