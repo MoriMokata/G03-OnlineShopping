@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { productsModel } from '../product.model'
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -31,6 +30,22 @@ export class ProductService {
       })
     };
     return this.http.get<any>('http://localhost:3000/products/get', httpOptions)
+      .pipe(map(data => {
+        if(data){
+          this.products = data;
+        }
+        return this.products;
+      }));
+  }
+
+  getProductsById(id: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: `${this.authService.getToken()}`
+      })
+    };
+    return this.http.get<any>(`http://localhost:3000/products/${id}`, httpOptions)
       .pipe(map(data => {
         if(data){
           this.products = data;
