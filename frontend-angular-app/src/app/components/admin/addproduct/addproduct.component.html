@@ -4,9 +4,9 @@
     <div class="row">
       <div class="col-md-6 ml-auto">
         <form [formGroup]="productForm">
-          <div class="card">
+          <!-- <div class="card">
 
-            <div class="card-body">
+            <div class="card-body"> -->
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -43,16 +43,16 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            <!-- </div>
+          </div> -->
         </form>
       </div>
 
       <div class="col-md-6 mr-auto">
         <form [formGroup]="productForm">
-          <div class="card">
+          <!-- <div class="card">
 
-            <div class="card-body">
+            <div class="card-body"> -->
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -78,27 +78,40 @@
                   </div>
                 </div>
               </div>
+             
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="file" class="mb-2">
                       <h6>Image</h6>
                     </label>
-                    <input type="file" class="form-control-file" formControlName='file' (change)="onChangeImg($event)">
+                    <div class="dropzone">
+                      <div class="text-wrapper">
+                        <div class="centered">
+                      Please
+                      <a (click)="selectFile.click()"><u>browse</u></a>
+                      a file
+                    </div>
+                    </div>
+                    </div><br>
+                    <input type="file" value="select" #selectFile class="form-control-file" formControlName='file' (change)="onChangeImg($event)">
+                    
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-2">
-                  <button type="button" class="btn btn-purple" (click)="addProduct()">Add </button>
+
+              <div class="row mt-3">
+                <div class="col mr-auto mt-2">
+                  <button type="button" class="btn btn-purple btn-lg float-right" (click)="addProduct()">Add Product</button>
                 </div>
-                <div class="col-md-2">
-                  <button type="reset" class="btn btn-danger">Reset</button>
+                <div class="col mr-auto mt-2">
+                  <button type="reset" class="btn btn-danger btn-lg float-right">Reset</button>
                 </div>
               </div>
+           
 
-            </div>
-          </div>
+            <!-- </div>
+          </div> -->
         </form>
       </div>
 
