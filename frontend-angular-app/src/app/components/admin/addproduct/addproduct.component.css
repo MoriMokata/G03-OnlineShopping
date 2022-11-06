@@ -3,3 +3,23 @@
   color: #fff;
 }   
 
+.dropzone{
+  height: 150px;
+  min-width: 100px;
+  display: table;
+  background-color: white;
+  width: 400px;
+  border: dashed 1px #aaa;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-wrapper{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.centered{
+  text-align: center;
+}
