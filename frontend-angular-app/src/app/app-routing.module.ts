@@ -29,7 +29,7 @@ const routes: Routes = [
       { path: 'wears', component: WearsComponent },
       { path: 'furnitures', component: FurnituresComponent },
       { path: 'food', component: FoodComponent },
-      { path: 'single-product', component: SingleProductComponent },
+      { path: 'single-product/:id', component: SingleProductComponent },
     ],
   },
 

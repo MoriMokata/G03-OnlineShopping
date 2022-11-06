@@ -1,10 +1,18 @@
-interface product{
+export interface Product{
     type: string,
-    id: string,
+    _id: string,
     name: string,
     detail: string,
     quantity: number,
-    price: number
+    price: number,
+    img: string,
 }
 
-export type productsModel = product[];
+export interface Cart {
+    _id: string,
+    productId: string,
+    product: Product,
+    userId: string,
+    quantity: number,
+    isOrdered: boolean,
+}

@@ -13,4 +13,13 @@ const productSchema = Schema({
     collection: 'products'
 });
 
-module.exports = { productSchema };
+const cartSchema = Schema({
+    userId: Schema.Types.ObjectId,
+    productId: Schema.Types.ObjectId,
+    quantity: Number,
+    isOrdered: { type: Boolean, default: false },
+}, {
+    collection: 'carts'
+})
+
+module.exports = { productSchema, cartSchema };

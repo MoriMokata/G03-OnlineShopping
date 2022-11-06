@@ -20,7 +20,7 @@ const addProduct = (productData) => {
 const listProducts = () => {
     return new Promise((resolve, reject) => {
         let Product = mongoose.model('products', productSchema);
-        Product.find({}, (err, data) => {
+        Product.find({ }, (err, data) => {
             if (err) {
                 reject(err);
             } else {
@@ -56,11 +56,18 @@ const deleteProduct = (id) => {
     });
 }
 
-// const getProduct = () => {
-//     return new Promise((resolve, reject) => {
-        
-//     });
-// }
+const getProductById = (id) => {
+    return new Promise((resolve, reject) => {
+        let Product = mongoose.model('products', productSchema);
+        Product.findById(id, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
 
 router.route('/add').post(authorization, (req, res) => {
     addProduct(req.body)
@@ -68,7 +75,7 @@ router.route('/add').post(authorization, (req, res) => {
         res.status(201).json(result);
     })
     .catch(err => {
-        res.status(400).send(`${err.name}: ${err.message}`);;
+        res.status(400).send(`${err.name}: ${err.message}`);
     });
 });
 
@@ -78,7 +85,7 @@ router.route('/get').get(authorization, (req, res) => {
         res.status(201).json(result);
     })
     .catch(err => {
-        res.status(400).send(`${err.name}: ${err.message}`);;
+        res.status(400).send(`${err.name}: ${err.message}`);
     });
 });
 
@@ -90,6 +97,17 @@ router.route('/get/:type').get(authorization, (req, res) => {
     })
     .catch(err => {
         res.status(400).send(`${err.name}: ${err.message}`);;
+    });
+});
+
+router.route('/:id').get(authorization, (req, res) => {
+    let id = req.params.id;
+    getProductById(id)
+    .then(result => {
+        res.status(201).json(result);
+    })
+    .catch(err => {
+        res.status(400).send(`${err.name}: ${err.message}`);
     });
 });
 

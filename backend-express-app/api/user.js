@@ -73,7 +73,7 @@ router.route('/signin').post(async (req, res) => {
         const loginStatus = await compareHash(payload.password, result.password);
         
         if (loginStatus) {
-            const token = jwt.sign(result, key, { expiresIn: 60*10 });
+            const token = jwt.sign(result, key, { expiresIn: "24h" });
             res.status(200).json({ result, token, loginStatus });
         } else {
             res.status(200).json({ loginStatus });

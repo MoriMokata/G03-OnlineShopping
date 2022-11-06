@@ -8,7 +8,7 @@ import { ProductService } from '../../../services/product.service'
 })
 export class ShowproductsComponent implements OnInit {
 
-  products: any;
+  products: any = [];
 
   constructor(private ps: ProductService) {
     this.onLoading();
