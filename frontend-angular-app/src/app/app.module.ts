@@ -24,6 +24,7 @@ import { PaymentComponent } from './components/member/payment/payment.component'
 // Admin
 import { AddproductComponent } from './components/admin/addproduct/addproduct.component';
 import { ShowproductsComponent } from './components/admin/showproducts/showproducts.component';
+import { UserinfoComponent } from './components/userinfo/userinfo.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { ShowproductsComponent } from './components/admin/showproducts/showprodu
     FooterComponent,
     AddproductComponent,
     ShowproductsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UserinfoComponent
   ],
   imports: [
     BrowserModule,
