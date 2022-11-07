@@ -1,7 +1,7 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="token"></app-navbar>
 
 <div class="container-fluid" style="margin-top:30px; padding: 1rem;">
   <router-outlet></router-outlet>
 </div>
 
-<app-footer></app-footer>
+<app-footer *ngIf="token"></app-footer>

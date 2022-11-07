@@ -50,4 +50,8 @@ export class UserService {
     const apiUrl = `http://localhost:3000/users/${id}`;
     return this.http.put<any>(apiUrl, payload, httpOptions);
   }
+
+  loadUser() {
+    return this.user;
+  }
 }

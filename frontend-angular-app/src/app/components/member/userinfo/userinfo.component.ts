@@ -11,7 +11,7 @@ export class UserinfoComponent implements OnInit {
 
   userData: any;
   previewLoaded: boolean = false;
-  defaultPics: string = 'https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg';
+  defaultPics: string = 'https://i.pinimg.com/736x/de/59/4e/de594ec09881da3fa66d98384a3c72ff.jpg';
 
   date: Array<number> = new Array(30);
   year: Array<number> = new Array(50);
@@ -130,7 +130,7 @@ export class UserinfoComponent implements OnInit {
       gender: this.userinfoForm.value.gender ?? "",
       occupation: this.userinfoForm.value.occupation ?? "",
       birthDay: new Date(`${this.userinfoForm.value.birthyear} ${this.userinfoForm.value.birthmonth} ${this.userinfoForm.value.birthdate}`),
-      picture: this.userinfoForm.value.picture ?? "",
+      picture: this.userinfoForm.value.picture ?? this.defaultPics,
     }
 
     let id = localStorage.getItem("id");

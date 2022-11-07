@@ -49,6 +49,9 @@ export class SingleProductComponent implements OnInit {
   }
 
   increaseQuantity() {
+    if (this.orderQuantity >= this.product.quantity) {
+      return;
+    }
     this.orderQuantity++;
   }
 
