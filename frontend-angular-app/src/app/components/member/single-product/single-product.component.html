@@ -1,5 +1,5 @@
 <!-- Open Content -->
-<section class="bg-light">
+<section class="bg-light Kanit">
   <div class="container pb-5">
     <div class="row">
       <div class="col-lg-5 mt-5">
@@ -11,11 +11,11 @@
       <div class="col-lg-7 mt-5">
         <div class="card">
           <div class="card-body">
-            <h1 class="h2">{{product.name}}</h1>
-            <p class="h3 py-2">฿{{product.price.toFixed(2)}}</p>
+            <h1 class="h2" style="color: #6f42c1; ">{{product.name}}</h1>
+            <p class="h3 py-2">฿ {{product.price.toFixed(2)}}</p>
             <br>
             <h6>Description:</h6>
-            <p>{{product.detail}}</p>
+            <p style="color: #7F7E80">{{product.detail}}</p>
             <br>
 
             <form action="" method="GET">
@@ -31,6 +31,9 @@
                     <li class="list-inline-item"><span class="btn btn-purple" id="btn-minus" (click)="decreaseQuantity()">-</span></li>
                     <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">{{orderQuantity}}</span></li>
                     <li class="list-inline-item"><span class="btn btn-purple" id="btn-plus" (click)="increaseQuantity()">+</span></li>
+                    <li class="list-inline-item"> <p style="color: #7F7E80">มีสินค้าทั้งหมด</p> </li>
+                    <li class="list-inline-item"> <p style="color: #7F7E80">{{product.quantity}}</p> </li>
+                    <li class="list-inline-item"> <p style="color: #7F7E80">ชิ้น</p> </li>
                   </ul>
                 </div>
 
