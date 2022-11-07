@@ -1,92 +1,103 @@
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <div class="container rounded bg-white mt-5 mb-5 ">
-    <form [formGroup]="userinfoForm">
-        <div class="row">
+  <form [formGroup]="userinfoForm">
+    <div class="row">
 
-            <div class="col-md-5 border-right ">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <!-- <input id="file-upload" class="_8LDVUy " type="file" accept=".jpg,.jpeg,.png">
-                        <button for="file-upload" type="button" class="btn btn-light btn--m btn--inline mt-5"  formControlName='picture' (change)="onChangeImg($event)"> -->
-                    <label for="file-upload" class="custom-file-upload box">
-                        <img class="circular--portrait" 
-                            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                        <i class="material-icons bet_time" style="font-size:38px;color:#8D9EFF">&#xe439;</i>
-                    </label>
-                    <input id="file-upload" type="file" />
+      <div class="col-md-5 border-right ">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <input id="file-upload" class="_8LDVUy " type="file" accept=".jpg,.jpeg,.png" formControlName='file' (change)="onChangeImg($event)">
+          <button for="file-upload" type="button" class="btn btn-light btn--m btn--inline mt-5">
+          <label for="file-upload" class="custom-file-upload box">
+            <img class="circular--portrait"
+              [src]="userinfoForm.value.picture ?? (userData?.picuture ?? defaultPics)">
+            <i class="material-icons bet_time" style="font-size:38px;color:#8D9EFF">&#xe439;</i>
+          </label>
+          <!-- <input id="file-upload" type="file" /> -->
 
-                    <!-- </button> -->
-                    <span class="font-weight-bold">user1</span><span class="text-black-50">user@gmail.com</span><span>
-                    </span>
-                </div>
-            </div>
-            <div class="col-md-5 border-right">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile</h4>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control"
-                                placeholder="First name" formControlName="name" value=""></div>
-                        <div class="col-md-6"><label class="labels">Surname</label><input type="text"
-                                class="form-control" value="" formControlName="surname" placeholder="Surname"></div>
-                    </div>
-
-                    <div class="row mt-3" formGroupName="address">
-
-                        <div class="col-md-12"><label class="labels">Address</label><textarea type="text"
-                                class="form-control" placeholder="Address" value=""
-                                formControlName="address"></textarea></div>
-                        <div class="col-md-6"><label class="labels">Country</label><select class="form-control" 
-                                formControlName="country">
-                                <option selected hidden >Country</option>
-                                <option *ngFor="let i of country">{{i}}</option>
-                            </select></div>
-                        <div class="col-md-6"><label class="labels">State/Region</label><select class="form-control" 
-                            formControlName="region">
-                            <option selected hidden >State/Region</option>
-                            <option *ngFor="let i of region">{{i}}</option>
-                        </select></div>
-                        <div class="col-md-6"><label class="labels">Zipcode</label><input type="text"
-                                class="form-control" placeholder="Postcode" value="" formControlName="zipcode"></div>
-                        <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text"
-                                class="form-control" placeholder="Phone number" value="" formControlName="mobile"></div>
-
-                    </div>
-
-                    <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Gender</label><select class="form-control"
-                                formControlName="gender">
-                                <option selected hidden>Gender</option>
-                                <option *ngFor="let i of gender">{{i}}</option>
-                            </select></div>
-                        <div class="col-md-6"><label class="labels">Occupation</label><select class="form-control"
-                                formControlName="occupation">
-                                <option selected hidden>Occupation
-                                <option *ngFor="let i of occupation">{{i}}</option>
-                            </select></div>
-                        <div class="col-md-4"><label class="labels">BirthDate</label><select class="form-control"
-                                formControlName="birthdate">
-                                <option *ngFor="let i of range(30,1)">{{i}}</option>
-                            </select></div>
-                        <div class="col-md-4"><label class="labels">BirthMonth</label><select class="form-control"
-                                formControlName="birthmonth">
-                                <option *ngFor="let item of month">{{item}}</option>
-                            </select></div>
-                        <div class="col-md-4"><label class="labels">BirthYear</label><select class="form-control"
-                                formControlName="birthyear">
-                                <option *ngFor="let i of range(50,1972)">{{i}}</option>
-                            </select></div>
-                    </div>
-
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save
-                            Profile</button></div>
-                </div>
-                {{userinfoForm.value | json}}
-            </div>
-
-
+          </button>
+          <span class="font-weight-bold">{{userData?.username ?? ""}}</span>
+          <span class="text-black-50">{{userData?.email ?? ""}}</span>
         </div>
-    </form>
+      </div>
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Profile</h4>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-6"><label class="labels">Name</label>
+              <input type="text" class="form-control" [value]="userData?.firstName ?? ''" placeholder="First name" formControlName="name">
+            </div>
+            <div class="col-md-6"><label class="labels">Surname</label>
+              <input type="text" class="form-control" [value]="userData?.lastName ?? ''" placeholder="Surname" formControlName="surname" >
+            </div>
+          </div>
+
+          <div class="row mt-3" formGroupName="address">
+
+            <div class="col-md-12"><label class="labels">Address</label><textarea type="text" class="form-control"
+                placeholder="Address" value="" formControlName="address"></textarea></div>
+            <div class="col-md-6"><label class="labels">Country</label><select class="form-control"
+                formControlName="country">
+                <option [selected]="userinfoForm.value.address?.country === null" [value]="null" hidden>Country</option>
+                <option *ngFor="let i of country">{{i}}</option>
+              </select></div>
+            <div class="col-md-6"><label class="labels">State/Region</label><select class="form-control"
+                formControlName="region">
+                <option [selected]="userinfoForm.value.address?.region === null" [value]="null" hidden>State/Region</option>
+                <option *ngFor="let i of region">{{i}}</option>
+              </select></div>
+            <div class="col-md-6"><label class="labels">Zipcode</label><input type="text" class="form-control"
+                placeholder="Postcode" value="" formControlName="zipcode"></div>
+            <div class="col-md-6"><label class="labels">Mobile Number</label><input type="text" class="form-control"
+                placeholder="Phone number" value="" formControlName="mobile"></div>
+
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6"><label class="labels">Gender</label>
+              <select class="form-control"
+                formControlName="gender">
+                <option [selected]="userinfoForm.value.gender === null" [value]="null" hidden>Gender</option>
+                <option *ngFor="let i of gender">{{i}}</option>
+              </select>
+            </div>
+            <div class="col-md-6"><label class="labels">Occupation</label>
+              <select class="form-control"
+                formControlName="occupation">
+                <option [selected]="userinfoForm.value.occupation === null" [value]="null" selected hidden>Occupation</option>
+                <option *ngFor="let i of occupation">{{i}}</option>
+              </select>
+            </div>
+            <div class="col-md-4"><label class="labels">BirthDate</label>
+              <select class="form-control" formControlName="birthdate">
+                <option *ngFor="let i of rangeDate(30,1)" [selected]="i === userinfoForm.value.birthdate">{{i}}</option>
+              </select>
+            </div>
+            <div class="col-md-4"><label class="labels">BirthMonth</label>
+              <select class="form-control" formControlName="birthmonth">
+                <option *ngFor="let item of month" [selected]="item === userinfoForm.value.birthmonth">{{item}}</option>
+              </select>
+            </div>
+            <div class="col-md-4"><label class="labels">BirthYear</label>
+              <select class="form-control" formControlName="birthyear">
+                <option *ngFor="let i of rangeYear(50,1972)" [selected]="i === userinfoForm.value.birthyear">{{i}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-5 text-center">
+            <button class="btn btn-primary profile-button" type="button" (click)="submit()">
+              Save Profile
+            </button>
+          </div>
+        </div>
+        <!-- {{userinfoForm.value | json}} -->
+      </div>
+
+
+    </div>
+  </form>
 </div>

@@ -88,11 +88,9 @@
                     <div class="dropzone">
                       <div class="text-wrapper">
                         <div class="centered">
-                      Please
-                      <a (click)="selectFile.click()"><u>browse</u></a>
-                      a file
-                    </div>
-                    </div>
+                          Please <a (click)="selectFile.click()"><u>browse</u></a> a file
+                        </div>
+                      </div>
                     </div><br>
                     <input type="file" value="select" #selectFile class="form-control-file" formControlName='file' (change)="onChangeImg($event)">
                     
