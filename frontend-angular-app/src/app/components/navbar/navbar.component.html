@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow">
+<nav class="navbar navbar-expand-lg navbar-light shadow Kanit">
   <div class="container d-flex justify-content-between align-items-center">
     
     <!-- Member Navbar -->
@@ -67,12 +67,19 @@
         <span class="badge badge-info">{{totalCartItem}}</span>
       </a>
       &nbsp;
-      <a *ngIf="!token" routerLink="login" class="btn btn-outline-light float-end">
-        <i class="fa fa-user-circle-o" aria-hidden="true"></i> Log in
-      </a>
-      <a *ngIf="token" (click)="logout()" class="btn btn-outline-light">
-        <i class="fa fa-user-circle-o" aria-hidden="true"></i> Log out
-      </a>
+      
+      
+      <div class="btn-group">
+       <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i> Username
+       </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="userinfo"> My Account</a></li>
+          <li><a class="dropdown-item" routerLink=" "> My Purchase</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#" *ngIf="token" (click)="logout()" >Log out</a></li>
+        </ul>
+      </div>
     </div> 
   </div>
 
