@@ -12,13 +12,14 @@ import { WearsComponent } from './components/member/wears/wears.component';
 import { FurnituresComponent } from './components/member/furnitures/furnitures.component';
 import { FoodComponent } from './components/member/food/food.component';
 import { SingleProductComponent } from './components/member/single-product/single-product.component';
-import { UserinfoComponent } from './components/userinfo/userinfo.component';
+import { UserinfoComponent } from './components/member/userinfo/userinfo.component';
 
 // Admin
 import { AddproductComponent } from './components/admin/addproduct/addproduct.component';
 import { ShowproductsComponent } from './components/admin/showproducts/showproducts.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminGuard } from './guards/admin.guard';
+import { CheckoutComponent } from './components/member/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -31,8 +32,8 @@ const routes: Routes = [
       { path: 'furnitures', component: FurnituresComponent },
       { path: 'food', component: FoodComponent },
       { path: 'single-product/:id', component: SingleProductComponent },
-      { path: 'userinfo', component:  UserinfoComponent},
-
+      { path: 'userinfo', component: UserinfoComponent},
+      { path: 'checkout', component: CheckoutComponent}
     ],
   },
 

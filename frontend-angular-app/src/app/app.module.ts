@@ -20,11 +20,12 @@ import { FurnituresComponent } from './components/member/furnitures/furnitures.c
 import { FoodComponent } from './components/member/food/food.component';
 import { SingleProductComponent } from './components/member/single-product/single-product.component';
 import { PaymentComponent } from './components/member/payment/payment.component';
+import { UserinfoComponent } from './components/member/userinfo/userinfo.component';
 
 // Admin
 import { AddproductComponent } from './components/admin/addproduct/addproduct.component';
 import { ShowproductsComponent } from './components/admin/showproducts/showproducts.component';
-import { UserinfoComponent } from './components/userinfo/userinfo.component';
+import { CheckoutComponent } from './components/member/checkout/checkout.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { UserinfoComponent } from './components/userinfo/userinfo.component';
     AddproductComponent,
     ShowproductsComponent,
     NotFoundComponent,
-    UserinfoComponent
+    UserinfoComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

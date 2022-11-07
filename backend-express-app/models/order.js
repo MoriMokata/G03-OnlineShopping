@@ -7,7 +7,7 @@ const orderSchema = Schema({
     carts: [cartSchema],
     order_time: { type: Date, default: Date.now },
 }, {
-    collection: 'products'
+    collection: 'orders'
 });
 
 module.exports = { orderSchema };

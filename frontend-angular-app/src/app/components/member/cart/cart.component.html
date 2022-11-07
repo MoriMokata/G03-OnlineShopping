@@ -6,10 +6,11 @@
         <!-- <th>ID.</th> -->
         <th>Image</th>
         <th>Name</th>
-         <th>Detail</th>
+        <th>Detail</th>
         <th>Type</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th>Total Price</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -25,12 +26,13 @@
         <td>{{item.product.price}} ฿</td>
         <!-- <td>{{item.quantity}}</td> -->
         <td class="list-inline">
-          <li class="list-inline-item"><span class="btn btn-purple" id="btn-minus">-</span></li>
+          <li class="list-inline-item"><span class="btn btn-purple" id="btn-minus" (click)="decreaseQuantity(i)">-</span></li>
           <li class="list-inline-item"><span id="var-value">{{item.quantity}}</span></li>
-          <li class="list-inline-item"><span class="btn btn-purple" id="btn-plus">+</span></li>
+          <li class="list-inline-item"><span class="btn btn-purple" id="btn-plus" (click)="increaseQuantity(i)">+</span></li>
         </td>
+        <td>{{item.quantity * item.product.price}}</td>
         <td>
-          <i class="fa fa-trash fa-2x" style="color:red;"></i>
+          <i class="fa fa-trash fa-2x" style="color:red;" (click)="deleteCartItem(i)"></i>
         </td>
       </tr>
     </tbody>
@@ -40,7 +42,13 @@
 <div class="row Kanit">
   <div class="col-md-12 text-right">
     <h4>Total : {{getTotal()}} ฿</h4>
-    <button type="button" class="btn btn-purple-two float-end"><i class="fa fa-money"><p class="Kanit">Check out</p></i></button>
+    <a type="button" class="btn btn-purple-two float-end" routerLink="/checkout">
+      <i class="fa fa-money">
+        <p class="Kanit">
+          Check out
+        </p>
+      </i>
+    </a>
   </div>
 </div>
 
