@@ -20,10 +20,13 @@ import { ShowproductsComponent } from './components/admin/showproducts/showprodu
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminGuard } from './guards/admin.guard';
 import { CheckoutComponent } from './components/member/checkout/checkout.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       { path: 'first', component: FirstComponent },
       { path: 'cart', component: CartComponent },
@@ -49,13 +52,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   
-  {
-    path: 'unauthorized', children: []
-  },
-  
-  {
-    path: '**', component: NotFoundComponent
-  }
+  { path: '**', component: NotFoundComponent }
 
 ];
 

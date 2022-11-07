@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +13,12 @@ export class NavbarComponent implements OnInit {
   token!: string | null;
   role!: string | null;
   totalCartItem: number = 0;
+  user: any | undefined;
 
   constructor(
     private authService: AuthService,
     private cartService: CartService,
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +28,7 @@ export class NavbarComponent implements OnInit {
     let userId = localStorage.getItem('id');
     if (userId) {
       this.getCart(userId);
+      this.getUser(userId);
     }
   }
 
@@ -32,6 +36,18 @@ export class NavbarComponent implements OnInit {
     this.cartService.getCart(id).subscribe({
       next: data => {
         this.totalCartItem = data.length;
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
+  }
+
+  getUser(id: string) {
+    this.userService.getUserData(id).subscribe({
+      next: data => {
+        console.log(data);
+        this.user = data;
       },
       error: err => {
         console.log(err);
