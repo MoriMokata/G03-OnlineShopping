@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
 
   submit() {
     let payload = {
-      name: this.registerForm.value.registerName,
+      username: this.registerForm.value.registerName,
       email: this.registerForm.value.registerEmail,
       password: this.registerForm.value.registerPassword,
       role: "Member"

@@ -39,11 +39,37 @@ const findUser = (email) => {
     });
 }
 
+const findUserById = (id) => {
+    return new Promise((resolve, reject) => {
+        let User = mongoose.model('users', userSchema);
+        User.findOne({ _id: id }, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
+
+const updateUser = (userData) => {
+    return new Promise((resolve, reject) => {
+        let User = mongoose.model('users', userSchema);
+        User.findByIdAndUpdate(userData._id, userData, { returnDocument: 'after' }, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        })
+    });
+}
+
 router.route('/create').post((req, res) => {
     makeHash(req.body.password)
     .then(hashText => {
         let payload = {
-            name: req.body.name,
+            username: req.body.username,
             email: req.body.email,
             password: hashText,
             role: req.body.role,
@@ -81,6 +107,47 @@ router.route('/signin').post(async (req, res) => {
     } catch (err) {
         res.status(400).send(err.message);
     }
+})
+
+router.route('/:id').get(async (req, res) => {
+    let id = req.params.id;
+
+    findUserById(id)
+    .then(result => {
+        res.status(201).json(result);
+    })
+    .catch(err => {
+        res.status(400).send(`${err.name}: ${err.message}`);
+    });
+    
+})
+
+router.route('/:id').put(async (req, res) => {
+    let payload = {
+        _id: req.params.id,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        address: {
+            address: req.body.address.address,
+            country: req.body.address.country,
+            region: req.body.address.region,
+            zipcode: req.body.address.zipcode,
+            mobile: req.body.address.mobile,
+        },
+        gender: req.body.gender,
+        occupation: req.body.occupation,
+        birthDay: req.body.birthDay,
+        picture: req.body.picture,
+    }
+
+    updateUser(payload)
+    .then(result => {
+        res.status(201).json(result);
+    })
+    .catch(err => {
+        res.status(400).send(`${err.name}: ${err.message}`);
+    });
+
 })
 
 module.exports = router;
