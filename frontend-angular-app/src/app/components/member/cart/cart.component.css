@@ -7,3 +7,15 @@
     background-color: #6f42c1;
     color: #fff;
   }
+
+  .showCursor{
+    cursor: pointer;
+}
+
+  td{
+    text-align: center;
+}
+
+tr{
+    text-align: center;
+}
