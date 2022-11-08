@@ -13,6 +13,7 @@ import { FurnituresComponent } from './components/member/furnitures/furnitures.c
 import { FoodComponent } from './components/member/food/food.component';
 import { SingleProductComponent } from './components/member/single-product/single-product.component';
 import { UserinfoComponent } from './components/member/userinfo/userinfo.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 // Admin
 import { AddproductComponent } from './components/admin/addproduct/addproduct.component';
@@ -36,7 +37,8 @@ const routes: Routes = [
       { path: 'food', component: FoodComponent },
       { path: 'single-product/:id', component: SingleProductComponent },
       { path: 'userinfo', component: UserinfoComponent},
-      { path: 'checkout', component: CheckoutComponent}
+      { path: 'checkout', component: CheckoutComponent},
+      { path: 'sidebar', component: SidebarComponent}
     ],
   },
 

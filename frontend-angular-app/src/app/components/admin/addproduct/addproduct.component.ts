@@ -12,6 +12,8 @@ export class AddproductComponent implements OnInit {
 
   productType: string[] = ['Electronics', 'Wears', 'Furniture', 'Food'];
 
+  files: any[] = [];
+
   productForm = new FormGroup({
     type: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
@@ -70,6 +72,19 @@ export class AddproductComponent implements OnInit {
   resetForm() {
     this.productForm.reset();
     this.previewLoaded = false;
+  }
+
+  onFileSelected(event:any) {
+    // Iterate over selected files
+    for (let file of event.target.files) {
+      // Delete prev lis
+      this.files.splice(0,1)
+      // Append to a list
+      this.files.push({
+        name: file.name
+        // Other specs
+      });
+    }
   }
 
 }
