@@ -12,6 +12,7 @@ export class CheckoutComponent implements OnInit {
   cart: any[] = [];
   user: any | undefined;
 
+  option :  Array<string> = ["Shopee Xpress (Standard Delivery)", "J&T Express", "Flash Express","Worklink Services Inc"]
   constructor(
     private cartService: CartService,
     private userService: UserService,
