@@ -26,6 +26,7 @@ import { UserinfoComponent } from './components/member/userinfo/userinfo.compone
 import { AddproductComponent } from './components/admin/addproduct/addproduct.component';
 import { ShowproductsComponent } from './components/admin/showproducts/showproducts.component';
 import { CheckoutComponent } from './components/member/checkout/checkout.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CheckoutComponent } from './components/member/checkout/checkout.compone
     ShowproductsComponent,
     NotFoundComponent,
     UserinfoComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

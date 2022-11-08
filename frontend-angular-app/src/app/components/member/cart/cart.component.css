@@ -1,21 +1,21 @@
 .btn-purple{
-    background-color: #D4A9FF;
-    color: #fff;
-  }
-
-  .btn-purple-two{
-    background-color: #6f42c1;
-    color: #fff;
-  }
-
-  .showCursor{
-    cursor: pointer;
+  background-color: #D4A9FF;
+  color: #fff;
 }
 
-  td{
-    text-align: center;
+.btn-purple-two{
+  background-color: #6f42c1;
+  color: #fff;
+}
+
+.showCursor{
+  cursor: pointer;
+}
+
+td{
+  text-align: center;
 }
 
 tr{
-    text-align: center;
+  text-align: center;
 }
