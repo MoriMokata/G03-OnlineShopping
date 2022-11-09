@@ -8,7 +8,7 @@
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small Kanit">
-            <li><a routerLink="#" class="link-dark rounded">Profile</a></li>
+            <li><a routerLink="../userinfo" class="link-dark rounded">Profile</a></li>
             <li><a routerLink="#" class="link-dark rounded">Banks & Cards</a></li>
             <li><a routerLink="#" class="link-dark rounded">Addresses</a></li>
             <li><a routerLink="#" class="link-dark rounded">Change Password</a></li>
@@ -22,7 +22,7 @@
       </li>
       <li class="border-top my-3" style="background-color: black"></li>
       <li class="mb-1">
-        <button class="btn btn-t align-items-center rounded collapsed"  aria-expanded="false" style="color:red">
+        <button class="btn btn-t align-items-center rounded collapsed"  aria-expanded="false" style="color:red" (click)="logout()">
             <img src="assets/img/logout.png" height="15"> &nbsp; &nbsp;Log out
         </button>
       </li>
