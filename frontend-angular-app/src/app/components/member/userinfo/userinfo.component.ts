@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-userinfo',
@@ -42,23 +43,23 @@ export class UserinfoComponent implements OnInit {
   occupation: Array<string> = ["Student", "Professor", "Merchant", "Researcher", "Businessman", "Doctor", "Police", "Post man", "Engineer", "Other"]
 
   userinfoForm = new FormGroup({
-    name: new FormControl(),
-    surname: new FormControl(),
+    name: new FormControl('',Validators.required),
+    surname: new FormControl('', Validators.required),
 
     address: new FormGroup({
-      address: new FormControl(),
-      country: new FormControl(),
-      region: new FormControl(),
-      zipcode: new FormControl(),
-      mobile: new FormControl(),
+      address: new FormControl('', Validators.required),
+      country: new FormControl('', Validators.required),
+      region: new FormControl('', Validators.required),
+      zipcode: new FormControl('',[Validators.required,Validators.pattern('^[1-9][0-9]{4}')]),
+      mobile: new FormControl('', [Validators.required,Validators.pattern('(0)[0-9]{9}')]),
     }),
-    gender: new FormControl(),
-    occupation: new FormControl(),
-    birthdate: new FormControl(1),
-    birthmonth: new FormControl(this.month[0]),
-    birthyear: new FormControl(1972),
-    file: new FormControl(),
-    picture: new FormControl(),
+    gender: new FormControl('', Validators.required),
+    occupation: new FormControl('', Validators.required),
+    birthdate: new FormControl(1, Validators.required),
+    birthmonth: new FormControl(this.month[0] ,Validators.required),
+    birthyear: new FormControl(1972, Validators.required),
+    file: new FormControl('',Validators.required),
+    picture: new FormControl('',Validators.required),
   })
 
   constructor(
