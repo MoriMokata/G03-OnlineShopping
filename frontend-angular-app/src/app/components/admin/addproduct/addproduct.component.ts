@@ -18,8 +18,8 @@ export class AddproductComponent implements OnInit {
     type: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     detail: new FormControl('', [Validators.required]),
-    quantity: new FormControl(0, [Validators.required]),
-    price: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(100000)]),
+    quantity: new FormControl(0, [Validators.required, Validators.min(1)]),
+    price: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(1000000)]),
     file: new FormControl('', [Validators.required]),
     img: new FormControl('', [Validators.required]),
   });
@@ -32,6 +32,10 @@ export class AddproductComponent implements OnInit {
   }
   get detail() { return this.productForm.get('detail'); }
   get price() { return this.productForm.get('price'); }
+  get name() { return this.productForm.get('name'); }
+  get type() { return this.productForm.get('type'); }
+  get quantity() { return this.productForm.get('quantity'); }
+  get file() { return this.productForm.get('file'); }
 
   addProduct() {
     if (!this.productForm.valid) {
