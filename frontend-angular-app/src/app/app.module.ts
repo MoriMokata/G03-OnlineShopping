@@ -27,6 +27,9 @@ import { AddproductComponent } from './components/admin/addproduct/addproduct.co
 import { ShowproductsComponent } from './components/admin/showproducts/showproducts.component';
 import { CheckoutComponent } from './components/member/checkout/checkout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ShoppingBagComponent } from './components/member/checkout/shopping-bag/shopping-bag.component';
+import { UserAddressComponent } from './components/member/checkout/user-address/user-address.component';
+import { PaymentMethodComponent } from './components/member/checkout/payment-method/payment-method.component';
 
 
 @NgModule({
@@ -49,7 +52,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     NotFoundComponent,
     UserinfoComponent,
     CheckoutComponent,
-    SidebarComponent
+    SidebarComponent,
+    ShoppingBagComponent,
+    UserAddressComponent,
+    PaymentMethodComponent
   ],
   imports: [
     BrowserModule,

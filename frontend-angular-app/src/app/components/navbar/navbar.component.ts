@@ -46,7 +46,6 @@ export class NavbarComponent implements OnInit {
   getUser(id: string) {
     this.userService.getUserData(id).subscribe({
       next: data => {
-        console.log(data);
         this.user = data;
       },
       error: err => {

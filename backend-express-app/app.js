@@ -11,6 +11,9 @@ app.use((req, res, next) => setupMongoose(req, res, next));
 app.use('/products', require('./api/product'));
 app.use('/users', require('./api/user'));
 app.use('/carts', require('./api/cart'));
+app.use('/user-addresses', require('./api/user-address'));
+app.use('/orders', require('./api/order'));
+
 
 app.listen(3000, () => {
     console.log('listening on port 3000');

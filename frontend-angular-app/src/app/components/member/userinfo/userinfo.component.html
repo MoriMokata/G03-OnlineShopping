@@ -41,12 +41,12 @@
                 placeholder="Address" value="" formControlName="address"></textarea></div>
             <div class="col-md-6"><label class="labels">Country</label><select class="form-control"
                 formControlName="country">
-                <option [selected]="userinfoForm.value.address?.country === null" [value]="null" hidden>Country</option>
+                <option [selected]="userinfoForm.value.address?.country === ''" value="" hidden>Country</option>
                 <option *ngFor="let i of country">{{i}}</option>
               </select></div>
             <div class="col-md-6"><label class="labels">State/Region</label><select class="form-control"
                 formControlName="region">
-                <option [selected]="userinfoForm.value.address?.region === null" [value]="null" hidden>State/Region</option>
+                <option [selected]="userinfoForm.value.address?.region === ''" value="" hidden>State/Region</option>
                 <option *ngFor="let i of region">{{i}}</option>
               </select></div>
             <div class="col-md-6"><label class="labels">Zipcode</label><input type="text" class="form-control"
@@ -60,14 +60,14 @@
             <div class="col-md-6"><label class="labels">Gender</label>
               <select class="form-control"
                 formControlName="gender">
-                <option [selected]="userinfoForm.value.gender === null" [value]="null" hidden>Gender</option>
+                <option [selected]="userinfoForm.value.gender === ''" value="" hidden>Gender</option>
                 <option *ngFor="let i of gender">{{i}}</option>
               </select>
             </div>
             <div class="col-md-6"><label class="labels">Occupation</label>
               <select class="form-control"
                 formControlName="occupation">
-                <option [selected]="userinfoForm.value.occupation === null" [value]="null" selected hidden>Occupation</option>
+                <option [selected]="userinfoForm.value.occupation === ''" value="" selected hidden>Occupation</option>
                 <option *ngFor="let i of occupation">{{i}}</option>
               </select>
             </div>

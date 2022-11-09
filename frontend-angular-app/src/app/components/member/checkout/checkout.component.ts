@@ -1,6 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
+
+interface Checkout {
+  userAddress: any,
+  carts: any[],
+  comment: string,
+  shipping: {
+    name: string,
+    price: number,
+  },
+  payment: {
+    cardType: string,
+    cardName: string,
+    cardNumber: string,
+    expirationData: string,
+    cvv: string,
+  },
+  totalPrice: number,
+}
 
 @Component({
   selector: 'app-checkout',
@@ -9,13 +28,19 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  cart: any[] = [];
   user: any | undefined;
+  
+  selectedUserAddress: any | undefined;
+  cart: any[] = [];
+  comment: string = '';
+  shipping: any;
+  payment: any;
+  totalPrice: number = 0;
 
-  option :  Array<string> = ["Shopee Xpress (Standard Delivery)", "J&T Express", "Flash Express","Worklink Services Inc"]
   constructor(
     private cartService: CartService,
     private userService: UserService,
+    private orderService: OrderService,
   ) { }
 
   ngOnInit(): void {
@@ -45,7 +70,7 @@ export class CheckoutComponent implements OnInit {
     this.cartService.getCart(userId).subscribe({
       next: data => {
         // console.log(data);
-
+        this.totalPrice = 0;
         if (data) {
           this.cart = data;
         }
@@ -55,4 +80,59 @@ export class CheckoutComponent implements OnInit {
       }
     })
   }
+
+  getCartTotalPrice() {
+    return this.cartService.getTotalPrice();
+  }
+
+  receiveUserAddress($event: any) {
+    this.selectedUserAddress = $event;
+  }
+
+  receiveShippingOption($event: any) {
+    this.shipping = $event;
+  }
+
+  receiveComment($event: string) {
+    this.comment = $event;
+  }
+
+  receivePaymentInfo($event: any) {
+    this.payment = $event;
+  }
+
+  submit() {
+    let payload: Checkout = {
+      userAddress: this.selectedUserAddress,
+      carts: this.cart,
+      comment: this.comment,
+      shipping: this.shipping,
+      payment: {
+        cardType: this.payment.type,
+        cardName: this.payment.cname,
+        cardNumber: this.payment.cnum,
+        expirationData: this.payment.exp,
+        cvv: this.payment.cvv,
+      },
+      totalPrice: this.getCartTotalPrice() + this.shipping.price,
+    }
+
+    console.log(payload);
+
+    this.orderService.createOrder(payload).subscribe({
+      next: data => {
+        if (data._id) {
+          alert('order created');
+        }
+      },
+      error: err => {
+        alert('order failed');
+        console.log(err);
+        
+      }
+    })
+  }
+
+  
+
 }

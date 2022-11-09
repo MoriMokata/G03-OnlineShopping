@@ -79,21 +79,21 @@ export class UserinfoComponent implements OnInit {
         if (data._id) {
           this.userData = data;
           this.userinfoForm.patchValue({
-            name: data?.firstName ?? null,
-            surname: data?.lastName ?? null,
+            name: data?.userInfo?.firstName ?? '',
+            surname: data?.userInfo?.lastName ?? '',
             address: {
-              address: data.address?.address ?? null,
-              country: data.address?.country ?? null,
-              region: data.address?.region ?? null,
-              zipcode: data.address?.zipcode ?? null,
-              mobile: data.address?.mobile ?? null,
+              address: data.userInfo?.address?.address ?? '',
+              country: data.userInfo?.address?.country ?? '',
+              region: data.userInfo?.address?.region ?? '',
+              zipcode: data.userInfo?.address?.zipcode ?? '',
+              mobile: data.userInfo?.address?.mobile ?? '',
             },
-            gender: data?.gender ?? null,
+            gender: data?.userInfo?.gender ?? '',
             birthdate: new Date(data.birthDay ?? `1972-01-01`).getDate(),
             birthmonth: this.month[new Date(data.birthDay ?? `1972-01-01`).getMonth()],
             birthyear: new Date(data.birthDay ?? `1972-01-01`).getFullYear(),
-            occupation: data?.occupation ?? null,
-            picture: data?.picture ?? null,
+            occupation: data?.userInfo?.occupation ?? '',
+            picture: data?.userInfo?.picture ?? '',
           })
         }
       },
@@ -127,11 +127,12 @@ export class UserinfoComponent implements OnInit {
     let payload = {
       firstName: this.userinfoForm.value.name ?? "",
       lastName: this.userinfoForm.value.surname ?? "",
-      address: this.userinfoForm.value.address ?? {},
+      address: { ...this.userinfoForm.value.address, fromUserInfo: true } ?? {},
       gender: this.userinfoForm.value.gender ?? "",
       occupation: this.userinfoForm.value.occupation ?? "",
       birthDay: new Date(`${this.userinfoForm.value.birthyear} ${this.userinfoForm.value.birthmonth} ${this.userinfoForm.value.birthdate}`),
       picture: this.userinfoForm.value.picture ?? this.defaultPics,
+      fromUserInfo: true,
     }
 
     let id = localStorage.getItem("id");
