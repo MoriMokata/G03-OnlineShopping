@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const { makeHash, compareHash } = require('../services/bcrypt');
 
-const { userSchema } = require('../models/user');
+const { userSchema, userAddressSchema } = require('../models/user');
+const authorization = require('../middlewares/authorize');
 
 const key = 'MY_KEY';
 
@@ -55,13 +56,35 @@ const findUserById = (id) => {
 const updateUser = (userData) => {
     return new Promise((resolve, reject) => {
         let User = mongoose.model('users', userSchema);
-        User.findByIdAndUpdate(userData._id, userData, { returnDocument: 'after' }, (err, data) => {
+        User.findByIdAndUpdate(userData._id, { userInfo: userData }, { returnDocument: 'after' }, (err, data) => {
             if (err) {
                 reject(err);
             } else {
+                // Update user address schema
+                let UserAddress = mongoose.model('user_addresses', userAddressSchema);
+                UserAddress.findOne({ userId: data._id, fromUserInfo: true }, (user_address_err, user_address_data) => {
+                    if (user_address_err) {
+                        reject(user_address_err);
+                    } else {
+                        // if userAddressSchema not have address from user info, then create it. Otherwise, update it.
+                        if (!user_address_data) {
+                            UserAddress.create({ userId: userData._id, ...userData.address }, (err) => {
+                                if (err) {
+                                    reject(err);
+                                }
+                            });
+                        } else {
+                            UserAddress.updateOne({ _id: user_address_data._id }, user_address_data, (err) => {
+                                if (err) {
+                                    reject(err);
+                                }
+                            });
+                        }
+                    }
+                })
                 resolve(data);
             }
-        })
+        });
     });
 }
 
@@ -109,7 +132,7 @@ router.route('/signin').post(async (req, res) => {
     }
 })
 
-router.route('/:id').get(async (req, res) => {
+router.route('/:id').get(authorization, (req, res) => {
     let id = req.params.id;
 
     findUserById(id)
@@ -122,7 +145,7 @@ router.route('/:id').get(async (req, res) => {
     
 })
 
-router.route('/:id').put(async (req, res) => {
+router.route('/:id').put(authorization, (req, res) => {
     let payload = {
         _id: req.params.id,
         firstName: req.body.firstName,
@@ -133,6 +156,7 @@ router.route('/:id').put(async (req, res) => {
             region: req.body.address.region,
             zipcode: req.body.address.zipcode,
             mobile: req.body.address.mobile,
+            fromUserInfo: req.body.address.fromUserInfo,
         },
         gender: req.body.gender,
         occupation: req.body.occupation,

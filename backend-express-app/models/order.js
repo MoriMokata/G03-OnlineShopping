@@ -1,11 +1,25 @@
 const mongoose = require('mongoose');
 const { cartSchema } = require('./product');
+const { userAddressSchema } = require('./user');
 var Schema = mongoose.Schema;
 
 const orderSchema = Schema({
-    total_price: Number,
+    userAddress: userAddressSchema,
     carts: [cartSchema],
-    order_time: { type: Date, default: Date.now },
+    comment: String,
+    shipping: {
+        name: String,
+        price: Number,
+    },
+    payment: {
+        cardType: String,
+        cardName: String,
+        cardNumber: String,
+        expirationData: String,
+        cvv: String,
+    },
+    totalPrice: Number,
+    orderTime: { type: Date, default: Date.now },
 }, {
     collection: 'orders'
 });

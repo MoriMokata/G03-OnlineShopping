@@ -74,7 +74,7 @@
       
       <div class="btn-group">
        <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{user.username ?? ''}}
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{user?.username ?? ''}}
        </button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" routerLink="sidebar"> My Account</a></li>
