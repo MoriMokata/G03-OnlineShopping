@@ -72,6 +72,7 @@ export class AddproductComponent implements OnInit {
   resetForm() {
     this.productForm.reset();
     this.previewLoaded = false;
+    this.files.splice(0,1);
   }
 
   onFileSelected(event:any) {
