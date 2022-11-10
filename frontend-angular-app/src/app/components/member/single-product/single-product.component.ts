@@ -9,7 +9,8 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./single-product.component.css']
 })
 export class SingleProductComponent implements OnInit {
-
+  
+  cl!: boolean;
   productId!: string | null;
   product = {
     _id: '',
