@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./single-product.component.css']
 })
 export class SingleProductComponent implements OnInit {
-  
+  clr='#6f42c1';
   cl!: boolean;
   productId!: string | null;
   product = {
