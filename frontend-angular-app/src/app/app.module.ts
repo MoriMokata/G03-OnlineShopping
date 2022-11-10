@@ -61,7 +61,7 @@ import { ManageUsersComponent } from './components/admin/manage-users/manage-use
     UserAddressComponent,
     PaymentMethodComponent,
     OrderSuccessComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
     ManageUsersComponent
   ],
   imports: [

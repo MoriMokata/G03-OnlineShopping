@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -8,12 +9,13 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./order-success.component.css']
 })
 export class OrderSuccessComponent implements OnInit {
-
+  user: any | undefined;
   order: any;
+  cart: any[] = [];
 
   constructor(
     private activateRoute: ActivatedRoute,
-    private orderService: OrderService
+    private orderService: OrderService,
   ) { }
 
   ngOnInit(): void {

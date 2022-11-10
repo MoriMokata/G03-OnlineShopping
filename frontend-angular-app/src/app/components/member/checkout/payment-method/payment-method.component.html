@@ -1,14 +1,14 @@
 <div class="row justify-content-center">
   <div class="col-lg-12 card d-flex flex-row">
 
-    <form [formGroup]="paymentInfoForm">
-      <div class="col-lg-2">
+
+      <div class="col-md-2" [formGroup]="paymentInfoForm">
         <div *ngFor="let item of types; index as i">
           <input type="radio" formControlName="type" [value]="item.value" class="btn-check btn-outline-light" [id]="'btn-check-'+i">
           <label [for]="'btn-check-'+i"><img class="pay" [src]="item.img"></label>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-md-6">
         <div class="row px-2 pb-4">
           <div class="form-group col-md-6">
             <label class="form-control-label">Name on Card</label>
@@ -30,9 +30,9 @@
           </div>
         </div>
       </div>
-    </form>
     
-    <div class="col-lg-4 mt-2">
+
+    <div class="col-md-4 mt-2">
       <div class="d-flex justify-content-between px-4">
         <p class="mb-1 text-left">Subtotal</p>
         <h6 class="mb-1 text-right">฿{{cartTotalPrice}}</h6>
