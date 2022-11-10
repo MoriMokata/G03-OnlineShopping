@@ -4,17 +4,17 @@
     <div class="row">
       <div class="col-lg-5 mt-5">
         <div class="card mb-3" [ngClass]="{'aura':cl}">
-          <img class="card-img img-fluid" [src]="product.img" alt="Card image cap" id="product-detail" (click)="cl=!cl">
+          <img class="card-img img-fluid cur" [src]="product.img" alt="Card image cap" id="product-detail" (click)="cl=!cl">
         </div>
       </div>
       <!-- col end -->
       <div class="col-lg-7 mt-5">
         <div class="card">
           <div class="card-body">
-            <h1 class="h2" style="color: #6f42c1; ">{{product.name}}</h1>
+            <h1 class="h2"  [ngStyle]="{'color':clr}">{{product.name}}</h1>
             <p class="h3 py-2">฿ {{product.price.toFixed(2)}}</p>
             <br>
-            <h6>Description:</h6>
+            <h6 [ngStyle]="{'color':clr}">Description:</h6>
             <p style="color: #7F7E80">{{product.detail}}</p>
             <br>
 
@@ -24,7 +24,7 @@
 
                 <div class="col-auto">
                   <ul class="list-inline pb-3">
-                    <li class="list-inline-item text-right">
+                    <li class="list-inline-item text-right" [ngStyle]="{'color':clr}">
                       Quantity
                       <input type="hidden" name="product-quanity" id="product-quanity" value="1">
                     </li>
