@@ -54,4 +54,15 @@ export class UserService {
   loadUser() {
     return this.user;
   }
+
+  deleteUser(userId: string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: `${this.authService.getToken()}`
+      })
+    };
+    return this.http.delete<any>(`http://localhost:3000/users/${userId}`, httpOptions);
+  }
+
 }
