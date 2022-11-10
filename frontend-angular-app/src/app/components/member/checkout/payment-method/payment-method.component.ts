@@ -39,6 +39,7 @@ export class PaymentMethodComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.paymentInfoEvent.emit(this.paymentInfoForm.value)
     this.paymentInfoForm.valueChanges.subscribe(value => {
       if (value) {
         this.paymentInfoEvent.emit(value);
