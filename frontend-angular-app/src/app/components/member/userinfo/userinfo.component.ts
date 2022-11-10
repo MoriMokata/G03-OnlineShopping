@@ -59,7 +59,7 @@ export class UserinfoComponent implements OnInit {
     birthmonth: new FormControl(this.month[0] ,Validators.required),
     birthyear: new FormControl(1972, Validators.required),
     file: new FormControl('',Validators.required),
-    picture: new FormControl('',Validators.required),
+    picture: new FormControl(this.defaultPics,Validators.required),
   })
 
   constructor(
@@ -93,7 +93,7 @@ export class UserinfoComponent implements OnInit {
             birthmonth: this.month[new Date(data.birthDay ?? `1972-01-01`).getMonth()],
             birthyear: new Date(data.birthDay ?? `1972-01-01`).getFullYear(),
             occupation: data?.userInfo?.occupation ?? '',
-            picture: data?.userInfo?.picture ?? '',
+            picture: data?.userInfo?.picture ?? this.defaultPics,
           })
         }
       },

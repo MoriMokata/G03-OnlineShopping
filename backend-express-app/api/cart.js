@@ -23,7 +23,8 @@ const getCartByUser = (id) => {
         Cart.aggregate([
             {
                 "$match": {
-                    "userId": mongoose.Types.ObjectId(id)
+                    "userId": mongoose.Types.ObjectId(id),
+                    "isOrdered": false
                 }
             },
             {
@@ -109,7 +110,7 @@ router.route('/user/:id').get(authorization, (req, res) => {
     let id = req.params.id;
     getCartByUser(id)
     .then(result => {
-        res.status(201).json(result);
+        res.status(200).json(result);
     })
     .catch(err => {
         res.status(400).send(`${err.name}: ${err.message}`);;
@@ -120,7 +121,7 @@ router.route('/:id').delete(authorization, (req, res) => {
     let id = req.params.id;
     deleteCartItem(id)
     .then(result => {
-        res.status(201).json(result);
+        res.status(200).json(result);
     })
     .catch(err => {
         res.status(400).send(`${err.name}: ${err.message}`);;

@@ -74,7 +74,7 @@ const updateUser = (userData) => {
                                 }
                             });
                         } else {
-                            UserAddress.updateOne({ _id: user_address_data._id }, user_address_data, (err) => {
+                            UserAddress.findByIdAndUpdate(user_address_data._id, userData.address, (err) => {
                                 if (err) {
                                     reject(err);
                                 }
@@ -82,6 +82,19 @@ const updateUser = (userData) => {
                         }
                     }
                 })
+                resolve(data);
+            }
+        });
+    });
+}
+
+const deleteUser = (id) => {
+    return new Promise((resolve, reject) => {
+        let User = mongoose.model('users', userSchema);
+        User.deleteOne({ _id: id }, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
                 resolve(data);
             }
         });
@@ -173,5 +186,16 @@ router.route('/:id').put(authorization, (req, res) => {
     });
 
 })
+
+router.route('/:id').delete(authorization, (req, res) => {
+    let id = req.params.id;
+    deleteUser(id)
+    .then(result => {
+        res.status(201).json(result);
+    })
+    .catch(err => {
+        res.status(400).send(`${err.name}: ${err.message}`);;
+    });
+});
 
 module.exports = router;
