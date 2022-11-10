@@ -2,3 +2,12 @@
     background-color: #6f42c1;
     color: #fff;
   }
+
+  .aura{
+    border: none;
+    box-shadow: 1px 5px 10px 1px rgb(132, 84, 255);
+}
+
+.cur{
+  cursor: pointer;
+}

@@ -30,8 +30,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ShoppingBagComponent } from './components/member/checkout/shopping-bag/shopping-bag.component';
 import { UserAddressComponent } from './components/member/checkout/user-address/user-address.component';
 import { PaymentMethodComponent } from './components/member/checkout/payment-method/payment-method.component';
+
 import { OrderSuccessComponent } from './components/member/order-success/order-success.component';
 import { OrderHistoryComponent } from './components/member/order-history/order-history.component';
+import { ManageUsersComponent } from './components/admin/manage-users/manage-users.component';
 
 
 @NgModule({
@@ -60,6 +62,7 @@ import { OrderHistoryComponent } from './components/member/order-history/order-h
     PaymentMethodComponent,
     OrderSuccessComponent,
     OrderHistoryComponent
+    ManageUsersComponent
   ],
   imports: [
     BrowserModule,

@@ -3,18 +3,18 @@
   <div class="container pb-5">
     <div class="row">
       <div class="col-lg-5 mt-5">
-        <div class="card mb-3">
-          <img class="card-img img-fluid" [src]="product.img" alt="Card image cap" id="product-detail">
+        <div class="card mb-3" [ngClass]="{'aura':cl}">
+          <img class="card-img img-fluid cur" [src]="product.img" alt="Card image cap" id="product-detail" (click)="cl=!cl">
         </div>
       </div>
       <!-- col end -->
       <div class="col-lg-7 mt-5">
         <div class="card">
           <div class="card-body">
-            <h1 class="h2" style="color: #6f42c1; ">{{product.name}}</h1>
+            <h1 class="h2"  [ngStyle]="{'color':clr}">{{product.name}}</h1>
             <p class="h3 py-2">฿ {{product.price.toFixed(2)}}</p>
             <br>
-            <h6>Description:</h6>
+            <h6 [ngStyle]="{'color':clr}">Description:</h6>
             <p style="color: #7F7E80">{{product.detail}}</p>
             <br>
 
@@ -24,13 +24,21 @@
 
                 <div class="col-auto">
                   <ul class="list-inline pb-3">
-                    <li class="list-inline-item text-right">
+                    <li class="list-inline-item text-right" [ngStyle]="{'color':clr}">
                       Quantity
                       <input type="hidden" name="product-quanity" id="product-quanity" value="1">
                     </li>
-                    <li class="list-inline-item"><span class="btn btn-purple" id="btn-minus" (click)="decreaseQuantity()">-</span></li>
+                    <li class="list-inline-item"><span class="btn" id="btn-minus" (click)="decreaseQuantity()" (click)="check2(); check1()"
+                      [ngStyle]="{
+                        'backgroundColor': onClickMinus ? '#6f42c1':'grey',
+                        'color':onClickPlus?'white': 'white'
+                      }">-</span></li>
                     <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">{{orderQuantity}}</span></li>
-                    <li class="list-inline-item"><span class="btn btn-purple" id="btn-plus" (click)="increaseQuantity()">+</span></li>
+                    <li class="list-inline-item"><span class="btn" id="btn-plus" (click)="increaseQuantity()" (click)="check1(); check2()"
+                      [ngStyle]="{
+                        'backgroundColor': onClickPlus ? '#6f42c1':'grey',
+                        'color':onClickMinus?'white': 'white'
+                      }">+</span></li>
                     
                     <li class="list-inline-item"> <p style="color: #7F7E80">{{product.quantity}}</p> </li>
                     <li class="list-inline-item"> <p style="color: #7F7E80">pieces available</p> </li>
@@ -42,8 +50,7 @@
               <div class="row pb-3">
 
                 <div class="col d-grid">
-                  <button type="submit" class="btn btn-purple btn-lg" name="submit" value="addtocard" (click)="addToCart()">Add To
-                    Cart</button>
+                  <button type="submit" class="btn btn-purple btn-lg" name="submit" value="addtocard" (click)="addToCart()" >Add To Cart</button>
                 </div>
               </div>
             </form>

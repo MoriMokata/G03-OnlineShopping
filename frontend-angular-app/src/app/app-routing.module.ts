@@ -24,6 +24,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminGuard } from './guards/admin.guard';
 import { CheckoutComponent } from './components/member/checkout/checkout.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ManageUsersComponent } from './components/admin/manage-users/manage-users.component';
 
 const routes: Routes = [
   {
@@ -51,7 +52,8 @@ const routes: Routes = [
     canActivate: [AdminGuard],
     children: [
       { path: 'add-product', component: AddproductComponent },
-      { path: 'show-products', component: ShowproductsComponent }
+      { path: 'show-products', component: ShowproductsComponent },
+      { path: 'manage-users', component: ManageUsersComponent }
     ],
   },
   

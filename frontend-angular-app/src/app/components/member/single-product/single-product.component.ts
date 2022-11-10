@@ -12,8 +12,11 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 })
 export class SingleProductComponent implements OnInit {
 
-  navbarComponent!: NavbarComponent;
-
+  clr='#6f42c1';
+  onClickPlus = true;
+  onClickMinus = true;
+  cl!: boolean;
+  
   productId!: string | null;
   product = {
     _id: '',
@@ -64,6 +67,21 @@ export class SingleProductComponent implements OnInit {
       return;
     }
     this.orderQuantity--;
+  }
+  
+  check1(){
+    if(this.orderQuantity==this.product.quantity){
+      this.onClickPlus=false;
+    }else{
+      this.onClickPlus=true;
+    }
+  }
+  check2(){
+    if(this.orderQuantity==1){
+      this.onClickMinus=false;
+    }else{
+      this.onClickMinus=true;
+    }
   }
 
   addToCart() {
