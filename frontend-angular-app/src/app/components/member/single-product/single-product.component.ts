@@ -10,6 +10,8 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class SingleProductComponent implements OnInit {
   clr='#6f42c1';
+  onClickPlus = true;
+  onClickMinus = true;
   cl!: boolean;
   productId!: string | null;
   product = {
@@ -61,6 +63,21 @@ export class SingleProductComponent implements OnInit {
       return;
     }
     this.orderQuantity--;
+  }
+  
+  check1(){
+    if(this.orderQuantity==this.product.quantity){
+      this.onClickPlus=false;
+    }else{
+      this.onClickPlus=true;
+    }
+  }
+  check2(){
+    if(this.orderQuantity==1){
+      this.onClickMinus=false;
+    }else{
+      this.onClickMinus=true;
+    }
   }
 
   addToCart() {

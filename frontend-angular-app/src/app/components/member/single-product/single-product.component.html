@@ -28,9 +28,17 @@
                       Quantity
                       <input type="hidden" name="product-quanity" id="product-quanity" value="1">
                     </li>
-                    <li class="list-inline-item"><span class="btn btn-purple" id="btn-minus" (click)="decreaseQuantity()">-</span></li>
+                    <li class="list-inline-item"><span class="btn" id="btn-minus" (click)="decreaseQuantity()" (click)="check2(); check1()"
+                      [ngStyle]="{
+                        'backgroundColor': onClickMinus ? '#6f42c1':'grey',
+                        'color':onClickPlus?'white': 'white'
+                      }">-</span></li>
                     <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">{{orderQuantity}}</span></li>
-                    <li class="list-inline-item"><span class="btn btn-purple" id="btn-plus" (click)="increaseQuantity()">+</span></li>
+                    <li class="list-inline-item"><span class="btn" id="btn-plus" (click)="increaseQuantity()" (click)="check1(); check2()"
+                      [ngStyle]="{
+                        'backgroundColor': onClickPlus ? '#6f42c1':'grey',
+                        'color':onClickMinus?'white': 'white'
+                      }">+</span></li>
                     
                     <li class="list-inline-item"> <p style="color: #7F7E80">{{product.quantity}}</p> </li>
                     <li class="list-inline-item"> <p style="color: #7F7E80">pieces available</p> </li>
@@ -42,8 +50,7 @@
               <div class="row pb-3">
 
                 <div class="col d-grid">
-                  <button type="submit" class="btn btn-purple btn-lg" name="submit" value="addtocard" (click)="addToCart()">Add To
-                    Cart</button>
+                  <button type="submit" class="btn btn-purple btn-lg" name="submit" value="addtocard" (click)="addToCart()" >Add To Cart</button>
                 </div>
               </div>
             </form>
