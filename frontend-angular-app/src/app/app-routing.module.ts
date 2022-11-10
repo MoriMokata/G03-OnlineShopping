@@ -14,6 +14,8 @@ import { FoodComponent } from './components/member/food/food.component';
 import { SingleProductComponent } from './components/member/single-product/single-product.component';
 import { UserinfoComponent } from './components/member/userinfo/userinfo.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { OrderSuccessComponent } from './components/member/order-success/order-success.component';
+import { OrderHistoryComponent } from './components/member/order-history/order-history.component';
 
 // Admin
 import { AddproductComponent } from './components/admin/addproduct/addproduct.component';
@@ -36,9 +38,11 @@ const routes: Routes = [
       { path: 'furnitures', component: FurnituresComponent },
       { path: 'food', component: FoodComponent },
       { path: 'single-product/:id', component: SingleProductComponent },
-      { path: 'userinfo', component: UserinfoComponent},
-      { path: 'checkout', component: CheckoutComponent},
-      { path: 'sidebar', component: SidebarComponent}
+      { path: 'userinfo', component: UserinfoComponent },
+      { path: 'checkout', component: CheckoutComponent },
+      { path: 'sidebar', component: SidebarComponent },
+      { path: 'success/:orderId', component: OrderSuccessComponent },
+      { path: 'order-history', component: OrderHistoryComponent },
     ],
   },
 

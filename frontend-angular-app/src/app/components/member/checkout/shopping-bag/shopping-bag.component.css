@@ -30,8 +30,7 @@ body {
 
 .book,
 .book-img {
-    width: 120px;
-    height: 180px;
+    height: 120px;
     border-radius: 5px;
 }
 

@@ -1,4 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
@@ -41,6 +42,7 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService,
     private userService: UserService,
     private orderService: OrderService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -102,9 +104,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   submit() {
+    let newCarts: any[] = [];
+    this.cart.map((item: any) => {
+      newCarts.push({ ...item, isOrdered: true });
+    });
+
     let payload: Checkout = {
       userAddress: this.selectedUserAddress,
-      carts: this.cart,
+      carts: newCarts,
       comment: this.comment,
       shipping: this.shipping,
       payment: {
@@ -123,12 +130,16 @@ export class CheckoutComponent implements OnInit {
       next: data => {
         if (data._id) {
           alert('order created');
+          setTimeout(() => {
+            this.router.navigate(['success', data._id]).then(() => {
+              window.location.reload();
+            });
+          }, 500);
         }
       },
       error: err => {
         alert('order failed');
         console.log(err);
-        
       }
     })
   }

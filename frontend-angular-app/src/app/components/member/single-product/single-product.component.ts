@@ -3,12 +3,16 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
+import { NavbarComponent } from '../../navbar/navbar.component';
+
 @Component({
   selector: 'app-single-product',
   templateUrl: './single-product.component.html',
   styleUrls: ['./single-product.component.css']
 })
 export class SingleProductComponent implements OnInit {
+
+  navbarComponent!: NavbarComponent;
 
   productId!: string | null;
   product = {
@@ -74,6 +78,7 @@ export class SingleProductComponent implements OnInit {
       next: data => {
         if (data._id) {
           alert('added to cart');
+          window.location.reload();
         }
       },
       error: err => {
