@@ -32,6 +32,11 @@ export class ManageUsersComponent implements OnInit {
       if (confirm('are you sure ?') == false) {
         return;
       }
+
+      if (userId === localStorage.getItem('id')) {
+        alert('cannot delete yourself');
+        return;
+      }
   
       this.userService.deleteUser(userId).subscribe({
         next: data => {
