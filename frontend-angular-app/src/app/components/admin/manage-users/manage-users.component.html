@@ -24,7 +24,7 @@
                 <td scope="row" >{{item._id}}</td>
                 <td >{{item.username}}</td>
                 <td >{{item.email}}</td>
-                <td ><img [src]="item.picture" style="height:150px;"></td>
+                <td ><img [src]="item.userInfo.picture" style="height:150px;"></td>
                 <td >
                     <i class="fa fa-trash showCursor fa-lg" (click)="deleteUser(item._id)" style="color:red"></i>
                   </td>

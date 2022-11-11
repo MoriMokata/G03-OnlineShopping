@@ -45,6 +45,7 @@ const routes: Routes = [
       { path: 'sidebar', component: SidebarComponent },
       { path: 'success/:orderId', component: OrderSuccessComponent },
       { path: 'order-history', component: OrderHistoryComponent },
+      { path: '' , redirectTo:'first',pathMatch:'full'}
     ],
   },
 
@@ -55,7 +56,7 @@ const routes: Routes = [
       { path: 'add-product', component: AddproductComponent },
       { path: 'show-products', component: ShowproductsComponent },
       { path: 'manage-users', component: ManageUsersComponent },
-      {path: 'order-history-admin', component: OrderHistoryAdminComponent}
+      {path: 'order-history-admin', component: OrderHistoryAdminComponent}, 
     ],
   },
   

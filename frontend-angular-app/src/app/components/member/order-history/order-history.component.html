@@ -9,29 +9,35 @@
         <span class="h2" style="vertical-align:middle"> Order History </span>
       </div>
 
-          <div class="col-lg-12 card">
-            <div class="row d-flex justify-content-center">
-                <div class="row text-left " style="color:blueviolet">
-                  <div class="col-3">
-                    <h4 class="mt-2">Order ID</h4>
-                  </div>
-                  <div class="col-3">
-                    <h4 class="mt-2">Date Time</h4>
-                  </div>
+          <div class="col-lg-12 card ">
+            <div class="row d-flex ">
+              <div class="col-md-12 d-flex" style="color:blueviolet">
+                <div class="col-sm-5">
+                  <h4 >Order ID</h4>
                 </div>
+                <div class="col-sm-5">
+                  <h4 >Date Time</h4>
+                </div>
+              </div>
+                <!-- <div class="row text-left " >
+                  
+                 
+                </div> -->
              
             </div>
             <div class="row d-flex justify-content-end border-top " *ngFor="let item of orders; index as i">
-              
-                  <div class="col-3">
-                    <p style="color:#6f42c1">{{item._id}}</p>
-                  </div>
-                  <div class="col-3">
-                    <!-- <div class="row d-flex justify-content-end "> -->
-                      <p>{{item.orderTime}}</p>
-                    <!-- </div> -->
-                  </div>
-                  <div class="col-md-6"></div>
+              <div class="col-lg-12 d-flex ">
+                <div class="col-md-5">
+                  <p style="color:#6f42c1">{{item._id}}</p>
+                </div>
+                <div class="col-md-5">
+                  <!-- <div class="row d-flex justify-content-end "> -->
+                    <p>{{item.orderTime}}</p>
+                  <!-- </div> -->
+                </div>
+              </div>
+                 
+                  
                   <div class="col-md-12 row-md-2 mt-3 d-flex justify-content-between border" style="background-color: #c18fff06; border-radius: 20px;" *ngFor="let sub of orders[i].carts">
                     <p><img [src]="sub.product.img" class="book-img"></p>
                     <p style="color: #D1ADFF">{{sub.product.name}} → {{sub.product.price}} ฿ </p>
