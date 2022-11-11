@@ -38,15 +38,46 @@
               </div>
                  
                   
-                  <div class="col-md-12 row-md-2 mt-3 d-flex justify-content-between border" style="background-color: #c18fff06; border-radius: 20px;" *ngFor="let sub of orders[i].carts">
+                  <div class="col-md-12 row-md-2 mt-3 d-flex justify-content-between border py-3 px-3" style="background-color: #c18fff06; border-radius: 20px;" *ngFor="let sub of orders[i].carts">
                     <p><img [src]="sub.product.img" class="book-img"></p>
                     <p style="color: #D1ADFF">{{sub.product.name}} → {{sub.product.price}} ฿ </p>
               
                   </div>
+                  <!-- <div class="card-body col-md-3">
                    <div class="col-12 mt3 d-flex justify-content-end">
                     <span class="p" style="color: black"> Total Price : &nbsp;</span>
                     <span class="p" style="color:#6f42c1"> {{item.totalPrice-item.shipping.price}} ฿</span>
                     </div>
+                    <div class="col-12 mt3 d-flex justify-content-end">
+                      <span class="p" style="color: black"> Shipping : &nbsp;</span>
+                      <span class="p" style="color:#6f42c1"> {{item.shipping.price}} ฿</span>
+                      </div>
+                      <div class="col-12 mt3 d-flex justify-content-end">
+                        <span class="p" style="color: black"> Total (tax included) : &nbsp;</span>
+                        <span class="p" style="color:#6f42c1"> {{item.totalPrice}} ฿</span>
+                        </div>
+                  </div> -->
+
+                  <div class="d-flex justify-content-end col-lg-12 mx-auto my-4">
+                    <div class="col-md-4">
+                    <div class="d-flex justify-content-between px-4">
+                      <p class="mb-1 text-left">Subtotal</p>
+                      <h6 class="mb-1 text-right">฿{{item.totalPrice-item.shipping.price}}</h6>
+                    </div>
+                    <div class="d-flex justify-content-between px-4">
+                      <p class="mb-1 text-left">Shipping</p>
+                      <h6 class="mb-1 text-right">฿{{item.shipping.price}}</h6>
+                    </div>
+                    <div class="row d-flex justify-content-center px-4 pt-3">
+                      <hr>
+                    </div>
+              
+                    <div class="d-flex justify-content-between px-4">
+                      <p class="mb-1 text-left" style="color:#6f42c1">Total</p>
+                      <h6 class="mb-1 text-right" style="color:#6f42c1">฿{{item.totalPrice}}</h6>
+                    </div>
+        
+                  </div>
                
             </div>
           </div>
@@ -54,26 +85,6 @@
     
         </div>
       </div>
-      <!-- <div class="table-responsive-md card">
-        <table class="table table-striped table-inverse">
-          <thead class="thead-inverse">
-            <tr>
-              <th>Order ID</th>
-              <th>Date Time</th>
-              <th>Products</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of orders; index as i"> 
-              <td class="sizeId">{{item._id}}</td>
-              <td>{{item.orderTime}}</td>
-              <td *ngFor="let sub of orders[i].carts; index as i"><img [src]="sub.product.img" class="book-img"><br>{{sub.product.name}} <br>฿ {{sub.product.price}}</td>
-              <td>{{item.quantity}}</td>
-              <td>{{item.price}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
     </div>
 
 
