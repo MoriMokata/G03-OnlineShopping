@@ -19,6 +19,15 @@ export class OrderHistoryAdminComponent implements OnInit {
   onLoading() {
     this.os.getOrderAll().subscribe({
       next: data => {
+        data.sort((a: any, b: any) => {
+          if (a._id < b._id) {
+            return 1;
+          }
+          if (a._id > b._id) {
+            return -1;
+          }
+          return 0;
+        });
         this.orders = data;
         console.log(data);
       },

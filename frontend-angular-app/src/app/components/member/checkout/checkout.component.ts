@@ -138,7 +138,7 @@ export class CheckoutComponent implements OnInit {
         }
       },
       error: err => {
-        alert('order failed');
+        alert('order failed (' + err.error + ')');
         console.log(err);
       }
     })

@@ -75,9 +75,9 @@
         <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{user?.username ?? ''}}
        </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" routerLink="sidebar"> My Account</a></li>
-          <!-- <li><a class="dropdown-item" routerLink="sidebar"> My Purchase</a></li> -->
-          <li><hr class="dropdown-divider"></li>
+          <li><a *ngIf="role==='Member'" class="dropdown-item" routerLink="sidebar"> My Account</a></li>
+          <!-- <li><a *ngIf="role==='Member'" class="dropdown-item" routerLink="sidebar"> My Purchase</a></li> -->
+          <li><hr *ngIf="role==='Member'" class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="#" *ngIf="token" (click)="logout()" >Log out</a></li>
         </ul>
       </div>
