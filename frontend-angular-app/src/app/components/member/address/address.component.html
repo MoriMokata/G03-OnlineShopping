@@ -21,9 +21,10 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of userAddresses; index as i">
-                        <td style="width: 30%">{{i+1}}
+                        <td style="width: 10%">{{i+1}}
                         </td>
-                        <td style="width: 70%">{{item?.address}} , {{item?.country}} , {{item?.region}} , {{item?.zipcode}}</td>
+                        <td style="width: 60%">{{item?.address}} , {{item?.country}} , {{item?.region}} , {{item?.zipcode}}</td>
+                        <td align="center" style="width: 10%"><i class="fa fa-trash showCursor fa-lg" style="color:red" (click)="deleteAddress(item._id)" ></i></td>
                     </tr>
                 </tbody>
             </table>
@@ -106,7 +107,7 @@
                 </div>
 
             </div>
-            {{address.value | json}}
+            <!-- {{address.value | json}} -->
         </div>
     </div>
 </div>

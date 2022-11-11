@@ -312,6 +312,10 @@ button:focus {
     cursor: pointer;
     box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
+.showCursor{
+    cursor: pointer;
+}
+
 
 .gray {
     -webkit-filter: grayscale(100%);
