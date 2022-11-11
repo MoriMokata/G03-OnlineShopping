@@ -102,7 +102,7 @@
             <div class="col-md-4">
             <div class="d-flex justify-content-between px-4">
               <p class="mb-1 text-left">Subtotal</p>
-              <h6 class="mb-1 text-right">฿{{order?.totalPrice}}</h6>
+              <h6 class="mb-1 text-right">฿{{order?.totalPrice-order?.shipping?.price}}</h6>
             </div>
             <div class="d-flex justify-content-between px-4">
               <p class="mb-1 text-left">Shipping</p>
@@ -114,7 +114,7 @@
       
             <div class="d-flex justify-content-between px-4">
               <p class="mb-1 text-left" style="color:#6f42c1">Total (tax included)</p>
-              <h6 class="mb-1 text-right" style="color:#6f42c1">฿{{order?.totalPrice + order?.shipping.price}}</h6>
+              <h6 class="mb-1 text-right" style="color:#6f42c1">฿{{order?.totalPrice}}</h6>
             </div>
 
           </div>
