@@ -29,12 +29,16 @@ const findUser = (email) => {
             if (err) {
                 reject(err);
             } else {
-                resolve({
-                    id: data._id,
-                    email: data.email,
-                    password: data.password,
-                    role: data.role,
-                });
+                if (!data) {
+                    reject(new mongoose.Error('user not found'));
+                } else {
+                    resolve({
+                        id: data._id,
+                        email: data.email,
+                        password: data.password,
+                        role: data.role,
+                    });
+                }
             }
         });
     });
