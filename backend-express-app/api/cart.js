@@ -7,13 +7,29 @@ const authorization = require('../middlewares/authorize');
 const addToCart = (cart) => {
     return new Promise((resolve, reject) => {
         let Cart = mongoose.model('carts', cartSchema);
-        Cart.create(cart, (err, data) => {
-            if (err) {
-                reject(err);
+        Cart.findOne({ userId: cart.userId, productId: cart.productId, isOrdered: false })
+        .then(result => {
+            if (!result) {
+                Cart.create(cart, (err, data) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(data);
+                    }
+                });
             } else {
-                resolve(data);
+                Cart.findByIdAndUpdate(result._id, { quantity: result.quantity + cart.quantity }, (err, data) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(data);
+                    }
+                });
             }
-        });
+        }).catch(err => {
+            reject(err);
+        })
+        
     });
 }
 
@@ -40,8 +56,7 @@ const getCartByUser = (id) => {
                 "$set": {
                     "product": {"$first": "$product"},
                 }
-            },
-              
+            }
         ]).exec((err, data) => {
             if (err) {
                 reject(err);

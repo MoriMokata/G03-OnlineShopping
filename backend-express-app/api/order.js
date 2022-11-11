@@ -12,7 +12,7 @@ const createOrder = async (orderData) => {
         let checkStock = orderData.carts.map(item => checkProductStock(item))
         Promise.all(checkStock)
         .then(_ => {
-            let updateCart = orderData.carts.map(item => updateCarts(item))
+            let updateCart = orderData.carts.map(item => updateCartsFromOrder(item))
             Promise.all(updateCart)
             .then(_ => {
                 Order.create(orderData, (err, data) => {
@@ -40,7 +40,7 @@ const checkProductStock = (cartItem) => {
                     reject(new mongoose.Error('product not found'));
                 }
                 if (data.quantity - cartItem.quantity < 0) {
-                    reject(new mongoose.Error('product out of stock'));
+                    reject(new mongoose.Error(data.name + ' - product out of stock'));
                 }
                 resolve(data);
             }
@@ -48,7 +48,7 @@ const checkProductStock = (cartItem) => {
     });
 }
 
-const updateCarts = (cartItem) => {
+const updateCartsFromOrder = (cartItem) => {
     return new Promise((resolve, reject) => {
         let Product = mongoose.model('products', productSchema);
         let Cart = mongoose.model('carts', cartSchema);
