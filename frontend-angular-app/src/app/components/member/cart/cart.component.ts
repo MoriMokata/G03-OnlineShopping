@@ -39,7 +39,6 @@ export class CartComponent implements OnInit {
     
     this.cartService.updateCartItem(cartItem._id, payload).subscribe({
       next: _ => {
-        alert('update successfully');
         this.getCart();
       },
       error: _ => {

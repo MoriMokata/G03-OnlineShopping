@@ -136,8 +136,8 @@ export class ShowproductsComponent implements OnInit {
 
   resetForm() {
     this.productForm.reset();
-    // this.previewLoaded = false;
-    // this.files.splice(0,1);
+    this.previewLoaded = false;
+    this.files.splice(0,1);
   }
 
 }

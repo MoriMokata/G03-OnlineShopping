@@ -129,7 +129,7 @@ export class CheckoutComponent implements OnInit {
     this.orderService.createOrder(payload).subscribe({
       next: data => {
         if (data._id) {
-          alert('order created');
+          alert('Checkout succesfully');
           setTimeout(() => {
             this.router.navigate(['success', data._id]).then(() => {
               window.location.reload();
@@ -138,7 +138,7 @@ export class CheckoutComponent implements OnInit {
         }
       },
       error: err => {
-        alert('order failed');
+        alert('Checkout failed');
         console.log(err);
       }
     })
