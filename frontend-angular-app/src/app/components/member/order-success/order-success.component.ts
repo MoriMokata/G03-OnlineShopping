@@ -21,7 +21,7 @@ export class OrderSuccessComponent implements OnInit {
     let orderId = this.activateRoute.snapshot.paramMap.get('orderId');
     if (orderId) {
       console.log(orderId);
-      
+      console.log("มี easter egg ซ่อนอยู่นะ อิอิ");
       this.getOrderDetail(orderId);
     }
   }
