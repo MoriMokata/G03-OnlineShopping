@@ -124,7 +124,7 @@ export class CheckoutComponent implements OnInit {
       totalPrice: this.getCartTotalPrice() + this.shipping.price,
     }
 
-    console.log(payload);
+    // console.log(payload);
 
     this.orderService.createOrder(payload).subscribe({
       next: data => {

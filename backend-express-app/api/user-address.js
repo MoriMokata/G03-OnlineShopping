@@ -17,19 +17,6 @@ const findUserAddressesByUser = (userId) => {
     });
 }
 
-router.route('/user/:userId').get(authorization, (req, res) => {
-    let id = req.params.userId;
-
-    findUserAddressesByUser(id)
-    .then(result => {
-        res.status(201).json(result);
-    })
-    .catch(err => {
-        res.status(400).send(`${err.name}: ${err.message}`);
-    });
-    
-})
-
 const addAddress = (addressData) => {
     return new Promise((resolve, reject) => {
         let UserAddress = mongoose.model('user_addresses', userAddressSchema);
@@ -53,5 +40,17 @@ router.route('/add').post(authorization, (req, res) => {
     });
 });
 
+router.route('/user/:userId').get(authorization, (req, res) => {
+    let id = req.params.userId;
+
+    findUserAddressesByUser(id)
+    .then(result => {
+        res.status(201).json(result);
+    })
+    .catch(err => {
+        res.status(400).send(`${err.name}: ${err.message}`);
+    });
+    
+})
 
 module.exports = router;
