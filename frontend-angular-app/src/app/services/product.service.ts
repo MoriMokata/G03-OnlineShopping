@@ -69,6 +69,16 @@ export class ProductService {
         return this.products;
       }));
   }
+
+  updateProduct(product: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: `${this.authService.getToken()}`
+      })
+    };
+    return this.http.put<any>(`http://localhost:3000/products/update`, product, httpOptions);
+  }
   
   deleteProduct(productId: string) {
     const httpOptions = {

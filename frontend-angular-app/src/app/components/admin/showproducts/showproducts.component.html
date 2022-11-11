@@ -32,12 +32,161 @@
               <td>{{item.price}}</td>
               <td><img [src]="item.img" style="height: 120px;"></td>
               <td>
-                <i class="fa fa-pencil showCursor fa-lg" style="color:blueviolet"></i>&nbsp;&nbsp;
+                <i class="fa fa-pencil showCursor fa-lg" style="color:blueviolet" data-bs-toggle="modal" data-bs-target="#editProductModal" (click)="selectProduct(i)"></i>&nbsp;&nbsp;
                 <i class="fa fa-trash showCursor fa-lg" style="color:red" (click)="deleteProduct(item._id)"></i>
               </td>
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editProductModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Product</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="padding: 2rem; background-color: #FDF8FF">
+          <div class="row">
+            <div class="col-md-6 ml-auto">
+              <form [formGroup]="productForm">
+                <!-- <div class="card">
+      
+                  <div class="card-body"> -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="name" class="mb-2">
+                            <h6>Product Name </h6>
+                          </label>
+                          <input id="name" type="text" class="form-control mb-3" formControlName="name">
+                          <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert alert-danger">
+                            <div *ngIf="name?.errors?.['required']">Your Product Name is incorrect!!</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="type" class="mb-2">
+                            <h6>Category</h6>
+                          </label>
+                          <select class="form-select mb-3" formControlName="type">
+                            <option *ngFor="let item of productType" [value]="item">{{item}}
+                            </option>
+                          </select>
+                          <div *ngIf="type?.invalid && (type?.dirty || type?.touched)" class="alert alert-danger">
+                            <div *ngIf="type?.errors?.['required']">Category must not null!!</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="detail" class="mb-2">
+                            <h6>Description</h6>
+                          </label>
+                          <textarea class="form-control mb-3" formControlName="detail" rows="5" id="detail"></textarea>
+                          <div *ngIf="detail?.invalid && (detail?.dirty || detail?.touched)" class="alert alert-danger">
+                            <div *ngIf="detail?.errors?.['required']">Detail must not null!!</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- </div>
+                </div> -->
+              </form>
+            </div>
+      
+            <div class="col-md-6 mr-auto">
+              <form [formGroup]="productForm">
+                <!-- <div class="card">
+      
+                  <div class="card-body"> -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="price" class="mb-2">
+                            <h6>Price</h6>
+                          </label>
+                          <input type="number" class="form-control mb-3" formControlName="price" id="price">
+                          <div *ngIf="price?.invalid && (price?.dirty || price?.touched)" class="alert alert-danger">
+                            <div *ngIf="price?.errors?.['required']">Your Price is incorrect!!</div>
+                            <div *ngIf="price?.errors?.['min'] || price?.errors?.['max']">Price is not in range 1-100000
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="quantity" class="mb-2">
+                            <h6>Stock</h6>
+                          </label>
+                          <input type="number" class="form-control mb-3" formControlName="quantity" id="quantity">
+                          <div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)" class="alert alert-danger">
+                            <div *ngIf="quantity?.errors?.['required']">Your Quantity is incorrect!!</div>
+                            <div *ngIf="quantity?.errors?.['min'] ">Quantity must more than 1 piece.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                   
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="file" class="mb-2">
+                            <h6>Image</h6>
+                          </label>
+                          <div class="dropzone">
+                            <div class="text-wrapper">
+                              <div class="centered">
+                                <img [src]="productForm.value.img" style="height: 120px;">
+                              </div>
+                              <div class="centered">
+                                Please <a (click)="selectFile.click()"><u class="showCursor" style="color: #6f42c1">browse</u></a> a file
+                              </div>
+                            </div>
+                          </div><br>
+                          <input  type="file"  style="display: none" accept=".jpg,.jpeg,.png" value="select" #selectFile class="form-control-file" formControlName='file' (change)="onChangeImg($event)" (change)="onFileSelected($event)">
+                          <div *ngIf="file?.invalid && (file?.dirty || file?.touched)" class="alert alert-danger">
+                            <div *ngIf="file?.errors?.['required']">Image must be not null!!</div>
+                          </div>
+                          <div class="file-list Kanit" *ngFor="let file of files; let i=index">
+                            
+                            <span class="h6 Kanit" style="vertical-align:middle"> File name :  </span>
+                            <span class="p Kanit" style="vertical-align:middle; color:#6f42c1"> {{file.name}} 	</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                      <div class="col mr-auto mt-2">
+                        <button type="button" class="btn btn-purple btn-lg float-right" (click)="updateProduct()">Edit Product</button>
+                      </div>
+                      <div class="col mr-auto mt-2">
+                        <button type="reset" class="btn btn-danger btn-lg float-right" (click)="resetForm()">Reset</button>
+                      </div>
+                    </div>
+                 
+      
+                  <!-- </div>
+                </div> -->
+              </form>
+            </div>
+      
+          </div>
+        </div>
       </div>
     </div>
   </div>
