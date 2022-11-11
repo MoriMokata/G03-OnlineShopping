@@ -30,6 +30,28 @@ const addAddress = (addressData) => {
     });
 }
 
+const deleteAddress = (id) => {
+    return new Promise((resolve, reject) => {
+        let Address = mongoose.model('user_addresses', userAddressSchema);
+        Address.deleteOne({_id:id}, (err,data) =>{
+            if(err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
+
+router.route('/:id').delete(authorization, (req, res) => {
+    let id = req.params.id;
+    deleteAddress(id).then(result => {
+        res.status(201).json(result);
+    }).catch(err => {
+        res.status(400).send(`${err.name}: ${err.message}`);
+    });
+});
+
 router.route('/add').post(authorization, (req, res) => {
     addAddress(req.body)
     .then(result => {

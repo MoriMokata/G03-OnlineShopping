@@ -25,7 +25,7 @@ export class AddressComponent implements OnInit {
 
   constructor(
     private userAddressService: UserAddressService
-  ) { }
+    ) { }
 
   ngOnInit(): void {
     let userId = localStorage.getItem('id');
@@ -33,6 +33,7 @@ export class AddressComponent implements OnInit {
       this.getUserAddresses(userId);
     }
   }
+  
 
   getUserAddresses(userId: string) {
     this.userAddressService.getUserAddresses(userId).subscribe({
@@ -82,6 +83,27 @@ export class AddressComponent implements OnInit {
 
     
   }
+
+  deleteAddress(addressId: string){
+    if(confirm('Are you sure ?')==false) {
+      return;
+    }
+
+    this.userAddressService.deleteAddress(addressId).subscribe({
+      next: data => {
+        if (data.deletedCount > 0){
+          alert('product deleted');
+          this.getUserAddresses(localStorage.getItem('id') as string);
+        }else{
+          alert('failed to delete');
+        }
+      },
+      error: err => {
+        alert('failed to delete');
+      }
+    });
+  }
+
 
   
   
