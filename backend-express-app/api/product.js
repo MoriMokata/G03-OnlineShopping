@@ -43,6 +43,19 @@ const listProductsByType = (type) => {
     });
 }
 
+const updateProduct = (productData) => {
+    return new Promise((resolve, reject) => {
+        let Product = mongoose.model('products', productSchema);
+        Product.findByIdAndUpdate(productData.id, productData, { returnDocument: 'after' }, (err, data) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        });
+    });
+}
+
 const deleteProduct = (id) => {
     return new Promise((resolve, reject) => {
         let Product = mongoose.model('products', productSchema);
@@ -92,6 +105,16 @@ router.route('/get').get(authorization, (req, res) => {
 router.route('/get/:type').get(authorization, (req, res) => {
     let type = req.params.type;
     listProductsByType(type)
+    .then(result => {
+        res.status(201).json(result);
+    })
+    .catch(err => {
+        res.status(400).send(`${err.name}: ${err.message}`);;
+    });
+});
+
+router.route('/update').put(authorization, (req, res) => {
+    updateProduct(req.body)
     .then(result => {
         res.status(201).json(result);
     })
