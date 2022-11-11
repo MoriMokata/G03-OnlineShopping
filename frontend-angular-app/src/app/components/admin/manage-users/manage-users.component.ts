@@ -8,45 +8,49 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ManageUsersComponent implements OnInit {
   
-  users: any=[];
-  constructor(private ps: UserService) {
-    // this.onLoading();
+  users: any = [];
+
+  constructor(private userService: UserService) {
+    this.onLoading();
+    console.log(this.users);
    }
 
   ngOnInit(): void {
   }
 
-  // onLoading() {
-  //   this.ps.getUserData().subscribe({
-  //     next: data => {
-  //       this.products = data;
-  //     },
-  //     error: err => {
-  //       console.log(err);
-  //     }
-  //   });
-
-  //   deleteUser(userId: string) {
-  //     if (confirm('are you sure ?') == false) {
-  //       return;
-  //     }
+  onLoading() {
+    this.userService.getListUser().subscribe({
+      next: data => {
+        this.users = data;
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+  }
+    deleteUser(userId: string) {
+      if (confirm('are you sure ?') == false) {
+        return;
+      }
   
-  //     this.ps.deleteUser(userId).subscribe({
-  //       next: data => {
-  //         if (data.deletedCount > 0) {
-  //           alert('product deleted');
-  //           this.onLoading();
-  //         } else {
-  //           alert('failed to delete');
-  //         }
-  //       },
-  //       error: err => {
-  //         alert('failed to delete');
-  //         console.log(err);
-  //       }
-  //     });
-  //   }
-  // }
+      this.userService.deleteUser(userId).subscribe({
+        next: data => {
+          if (data.deletedCount > 0) {
+            alert('product deleted');
+            this.onLoading();
+          } else {
+            alert('failed to delete');
+          }
+        },
+        error: err => {
+          alert('failed to delete');
+          console.log(err);
+        }
+      });
+    }
 
-}
- 
+    
+  }
+
+
+
