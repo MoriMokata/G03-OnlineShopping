@@ -40,6 +40,24 @@ export class UserService {
     );
   }
 
+  getListUser() {
+    const httpOptions = {
+      headers : new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `${this.authService.getToken()}`
+      })
+    };
+    const apiUrl = `http://localhost:3000/users/listUser`;
+    return this.http.get<any>(apiUrl, httpOptions).pipe(
+      map(data => {
+        if(data) {
+          this.user = data;
+        }
+        return this.user;
+      }) 
+    );
+  }
+
   updateUser(id: string, payload: any) {
     const httpOptions = {
       headers: new HttpHeaders({

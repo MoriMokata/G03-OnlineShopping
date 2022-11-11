@@ -101,6 +101,27 @@ const deleteUser = (id) => {
     });
 }
 
+const getListuser = () => {
+    return new Promise((resolve, reject)=>{
+        let listUser = mongoose.model('user', userSchema);
+        listUser.find({ }, (err, data)=>{
+            if (err){
+                reject(err);
+            } else{
+                resolve(data);
+            }
+        });
+    });
+}
+
+router.route('/listUser').get(authorization, (req, res) =>{
+    getListuser().then(result =>{
+        res.status(201).json(result);
+    }).catch(err => {
+        res.status(400).send(`${err.name}: ${err.message}`);
+    });
+})
+
 router.route('/create').post((req, res) => {
     makeHash(req.body.password)
     .then(hashText => {
