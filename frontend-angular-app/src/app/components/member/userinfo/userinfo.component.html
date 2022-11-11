@@ -6,32 +6,34 @@
     <div class="row">
 
       <div class="col-md-5 border-right ">
-        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-          <input id="file-upload" class="_8LDVUy " type="file" accept=".jpg,.jpeg,.png" formControlName='file' (change)="onChangeImg($event)">
-          <button for="file-upload" type="button" class="btn btn-light btn--m btn--inline mt-5">
-          <label for="file-upload" class="custom-file-upload box">
-            <img class="circular--portrait"
-              [src]="userinfoForm.value.picture ?? (userData?.picuture ?? defaultPics)">
-            <i class="material-icons bet_time" style="font-size:38px;color:#8D9EFF">&#xe439;</i>
-          </label>
-          <!-- <input id="file-upload" type="file" /> -->
+        <div class="d-flex flex-column align-items-center text-center ">
+          <input id="file-upload" class="_8LDVUy " type="file" accept=".jpg,.jpeg,.png" formControlName='file'
+            (change)="onChangeImg($event)">
+          <button for="file-upload" type="button" class="btn btn-light btn--m btn--inline">
+            <label for="file-upload" class="custom-file-upload box">
+              <img class="circular--portrait" [src]="userinfoForm.value.picture ?? (userData?.picuture ?? defaultPics)">
+              <i class="material-icons bet_time" style="font-size:38px;color:#8D9EFF">&#xe439;</i>
+            </label>
+            <!-- <input id="file-upload" type="file" /> -->
 
           </button>
           <span class="font-weight-bold">{{userData?.username ?? ""}}</span>
           <span class="text-black-50">{{userData?.email ?? ""}}</span>
         </div>
       </div>
-      <div class="col-md-5 border-right">
-        <div class="p-3 py-5">
+      <div class="col-md-7 border-right">
+        <div class="p-3 ">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-right">Profile</h4>
           </div>
           <div class="row mt-2">
             <div class="col-md-6"><label class="labels">Name</label>
-              <input type="text" class="form-control" [value]="userData?.firstName ?? ''" placeholder="First name" formControlName="name">
+              <input type="text" class="form-control" [value]="userData?.firstName ?? ''" placeholder="First name"
+                formControlName="name">
             </div>
             <div class="col-md-6"><label class="labels">Surname</label>
-              <input type="text" class="form-control" [value]="userData?.lastName ?? ''" placeholder="Surname" formControlName="surname" >
+              <input type="text" class="form-control" [value]="userData?.lastName ?? ''" placeholder="Surname"
+                formControlName="surname">
             </div>
           </div>
 
@@ -39,14 +41,20 @@
 
             <div class="col-md-12"><label class="labels">Address</label><textarea type="text" class="form-control"
                 placeholder="Address" value="" formControlName="address"></textarea></div>
-            <div class="col-md-6"><label class="labels">Country</label><select class="form-control"
+            <div class="col-md-6"><label class="labels">Country</label>
+              <select class="form-control"
                 formControlName="country">
-                <option [selected]="userinfoForm.value.address?.country === ''" value="" hidden>Country</option>
+                <option [selected]="userinfoForm.value.address?.country === null" [value]="null" hidden>Country</option>
                 <option *ngFor="let i of country">{{i}}</option>
-              </select></div>
+              </select>
+
+
+            </div>
+
             <div class="col-md-6"><label class="labels">State/Region</label><select class="form-control"
                 formControlName="region">
-                <option [selected]="userinfoForm.value.address?.region === ''" value="" hidden>State/Region</option>
+                <option [selected]="userinfoForm.value.address?.region === null" [value]="null" hidden>State/Region
+                </option>
                 <option *ngFor="let i of region">{{i}}</option>
               </select></div>
             <div class="col-md-6"><label class="labels">Zipcode</label><input type="text" class="form-control"
@@ -58,16 +66,15 @@
 
           <div class="row mt-3">
             <div class="col-md-6"><label class="labels">Gender</label>
-              <select class="form-control"
-                formControlName="gender">
-                <option [selected]="userinfoForm.value.gender === ''" value="" hidden>Gender</option>
+              <select class="form-control" formControlName="gender">
+                <option [selected]="userinfoForm.value.gender === null" [value]="null" hidden>Gender</option>
                 <option *ngFor="let i of gender">{{i}}</option>
               </select>
             </div>
             <div class="col-md-6"><label class="labels">Occupation</label>
-              <select class="form-control"
-                formControlName="occupation">
-                <option [selected]="userinfoForm.value.occupation === ''" value="" selected hidden>Occupation</option>
+              <select class="form-control" formControlName="occupation">
+                <option [selected]="userinfoForm.value.occupation === null" [value]="null" selected hidden>Occupation
+                </option>
                 <option *ngFor="let i of occupation">{{i}}</option>
               </select>
             </div>
@@ -83,7 +90,8 @@
             </div>
             <div class="col-md-4"><label class="labels">BirthYear</label>
               <select class="form-control" formControlName="birthyear">
-                <option *ngFor="let i of rangeYear(50,1972)" [selected]="i === userinfoForm.value.birthyear">{{i}}</option>
+                <option *ngFor="let i of rangeYear(50,1972)" [selected]="i === userinfoForm.value.birthyear">{{i}}
+                </option>
               </select>
             </div>
           </div>

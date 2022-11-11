@@ -32,4 +32,16 @@ export class UserAddressService {
       })
     );
   }
+
+
+  addAddress(addressData:any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: `${this.authService.getToken()}`
+      })
+    };
+    return this.http.post<any>('http://localhost:3000/user-addresses/add', addressData, httpOptions);
+  }
+
 }

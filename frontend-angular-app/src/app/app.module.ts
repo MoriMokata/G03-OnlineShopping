@@ -21,6 +21,7 @@ import { FoodComponent } from './components/member/food/food.component';
 import { SingleProductComponent } from './components/member/single-product/single-product.component';
 import { PaymentComponent } from './components/member/payment/payment.component';
 import { UserinfoComponent } from './components/member/userinfo/userinfo.component';
+import { AddressComponent } from './components/member/address/address.component';
 
 // Admin
 import { AddproductComponent } from './components/admin/addproduct/addproduct.component';
@@ -34,6 +35,7 @@ import { PaymentMethodComponent } from './components/member/checkout/payment-met
 import { OrderSuccessComponent } from './components/member/order-success/order-success.component';
 import { OrderHistoryComponent } from './components/member/order-history/order-history.component';
 import { ManageUsersComponent } from './components/admin/manage-users/manage-users.component';
+
 
 
 @NgModule({
@@ -61,8 +63,9 @@ import { ManageUsersComponent } from './components/admin/manage-users/manage-use
     UserAddressComponent,
     PaymentMethodComponent,
     OrderSuccessComponent,
-    OrderHistoryComponent
-    ManageUsersComponent
+    OrderHistoryComponent,
+    ManageUsersComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,

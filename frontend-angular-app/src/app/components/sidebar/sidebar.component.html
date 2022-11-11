@@ -1,30 +1,61 @@
+<div class="d-flex justify-content-center">
+  <div class="col-lg-8 row">
+    <div class="col-md-3">
+      <div class="flex-shrink-0 p-3 bg-purple" >
+        <ul class="list-unstyled ps-0">
+          <li class="mb-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" (click)="onclick(1)" data-bs-toggle="collapse"  aria-expanded="true">
+              <img src="assets/img/user.png" height="15"> &nbsp; &nbsp;My Account
+            </button>
+            <div class="collapse show" id="home-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small Kanit" >
+                
+                <li><a (click)="onclick(1)" class="link-dark rounded select" >Profile</a></li>
+                <li><a (click)="onclick(2)" class="link-dark rounded select">Banks & Cards</a></li>
+                <li><a (click)="onclick(3)" class="link-dark rounded select">Addresses</a></li>
+                <li><a class="link-dark rounded">Change Password</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="mb-1">
+            <button  class="btn btn-t align-items-center rounded collapsed" (click)="onclick(3)"  aria-expanded="false" >
+                <img src="assets/img/document.png" height="15"> &nbsp; &nbsp;My Purchase
+            </button>
+          </li>
+          <li class="border-top my-3" style="background-color: black"></li>
+          <li class="mb-1">
+            <button class="btn btn-t align-items-center rounded collapsed"  aria-expanded="false" style="color:red" (click)="logout()">
+                <img src="assets/img/logout.png" height="15"> &nbsp; &nbsp;Log out
+            </button>
+          </li>
+        </ul>
+      </div>
 
-  <div class="flex-shrink-0 p-3 bg-purple" style="width: 280px;">
-   
-    <ul class="list-unstyled ps-0">
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-          <img src="assets/img/user.png" height="15"> &nbsp; &nbsp;My Account
-        </button>
-        <div class="collapse show" id="home-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small Kanit">
-            <li><a routerLink="../userinfo" class="link-dark rounded">Profile</a></li>
-            <li><a routerLink="#" class="link-dark rounded">Banks & Cards</a></li>
-            <li><a routerLink="#" class="link-dark rounded">Addresses</a></li>
-            <li><a routerLink="#" class="link-dark rounded">Change Password</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-t align-items-center rounded collapsed" aria-expanded="false">
-            <img src="assets/img/document.png" height="15"> &nbsp; &nbsp;My Purchase
-        </button>
-      </li>
-      <li class="border-top my-3" style="background-color: black"></li>
-      <li class="mb-1">
-        <button class="btn btn-t align-items-center rounded collapsed"  aria-expanded="false" style="color:red" (click)="logout()">
-            <img src="assets/img/logout.png" height="15"> &nbsp; &nbsp;Log out
-        </button>
-      </li>
-    </ul>
+    </div>
+    <div [ngSwitch]="show" class="col-md-9">
+      <div *ngSwitchCase="1" >
+        <div ><app-userinfo></app-userinfo></div>
+      </div>
+      <div *ngSwitchCase="2" >
+        <div ><app-cart></app-cart></div>
+      </div>
+      <div *ngSwitchCase="3" >
+        <div ><app-address></app-address></div>
+      </div>
+      <div *ngSwitchDefault >
+        <div ><app-address></app-address></div>
+      </div>
+    </div>
+
+    {{show.value | json}}
+
+    
+    
+    
   </div>
+  
+
+  
+
+</div>
+  
