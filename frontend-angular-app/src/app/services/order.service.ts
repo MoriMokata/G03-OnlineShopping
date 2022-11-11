@@ -63,7 +63,7 @@ export class OrderService {
         Authorization: `${this.authService.getToken()}`
       })
     };
-    return this.http.get<any>(`http://localhost:3000/orders`, httpOptions).pipe(
+    return this.http.get<any>(`http://localhost:3000/orders/all`, httpOptions).pipe(
       map((data: any) => {
         this.order = data;
         return this.order;

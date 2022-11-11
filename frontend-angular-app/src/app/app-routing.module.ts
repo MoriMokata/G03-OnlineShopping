@@ -25,6 +25,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { CheckoutComponent } from './components/member/checkout/checkout.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ManageUsersComponent } from './components/admin/manage-users/manage-users.component';
+import { OrderHistoryAdminComponent } from './components/admin/order-history-admin/order-history-admin.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,8 @@ const routes: Routes = [
     children: [
       { path: 'add-product', component: AddproductComponent },
       { path: 'show-products', component: ShowproductsComponent },
-      { path: 'manage-users', component: ManageUsersComponent }
+      { path: 'manage-users', component: ManageUsersComponent },
+      {path: 'order-history-admin', component: OrderHistoryAdminComponent}
     ],
   },
   
