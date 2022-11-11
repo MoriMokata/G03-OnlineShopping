@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class RegisterComponent implements OnInit {
   
   constructor(
     private userService: UserService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,10 @@ export class RegisterComponent implements OnInit {
       next: res => {
         if (res._id) {
           alert('Sign up successfully');
+          setTimeout(() => {
+            this.router.navigate(['login']);
+          }, 500);
+          
         } else {
           alert('Sign up failed');
         }

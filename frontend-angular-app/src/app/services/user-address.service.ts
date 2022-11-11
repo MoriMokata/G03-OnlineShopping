@@ -44,4 +44,14 @@ export class UserAddressService {
     return this.http.post<any>('http://localhost:3000/user-addresses/add', addressData, httpOptions);
   }
 
+  deleteAddress(addressId: string){
+    const httpOption = {
+      headers : new HttpHeaders({
+        'Content-Type' : 'application/json',
+        Authorization: `${this.authService.getToken()}`
+      })
+    };
+    return this.http.delete<any>(`http://localhost:3000/user-addresses/${addressId}`, httpOption);
+  }
+
 }
