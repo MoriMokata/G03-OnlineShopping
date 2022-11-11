@@ -11,9 +11,9 @@
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small Kanit" >
                 
                 <li><a (click)="onclick(1)" class="link-dark rounded select" >Profile</a></li>
-                <li><a (click)="onclick(2)" class="link-dark rounded select">Banks & Cards</a></li>
-                <li><a (click)="onclick(3)" class="link-dark rounded select">Addresses</a></li>
-                <li><a class="link-dark rounded">Change Password</a></li>
+                <!-- <li><a (click)="onclick(2)" class="link-dark rounded select">Banks & Cards</a></li> -->
+                <li><a (click)="onclick(2)" class="link-dark rounded select">Addresses</a></li>
+                <!-- <li><a class="link-dark rounded">Change Password</a></li> -->
               </ul>
             </div>
           </li>
@@ -37,13 +37,13 @@
         <div ><app-userinfo></app-userinfo></div>
       </div>
       <div *ngSwitchCase="2" >
-        <div ><app-cart></app-cart></div>
+        <div ><app-address></app-address></div>
       </div>
       <div *ngSwitchCase="3" >
-        <div ><app-address></app-address></div>
+        <div ><app-order-history></app-order-history></div>
       </div>
       <div *ngSwitchDefault >
-        <div ><app-address></app-address></div>
+        <div ><app-userinfo></app-userinfo></div>
       </div>
     </div>
 
